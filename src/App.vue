@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <NavBar></NavBar>
   </nav>
   <router-view/>
 
@@ -31,6 +30,13 @@
 
     </div>
     <button @click="toggleModalTwo">Open Modal Two</button>
+
+    <button class="btn btn-primary" data-bs-target="#collapseTarget" data-bs-toggle="collapse">
+        Bootstrap collapse
+    </button>
+    <div class="collapse py-2" id="collapseTarget">
+        This is the toggle-able content!
+    </div>
     
 </template>
 
@@ -38,13 +44,15 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 
+  import NavBar from './components/NavBar.vue'
   import ModalOne from './components/ModalOne.vue'
   import ModalTwo from './components/ModalTwo.vue'
 
 
+
 export default {
   name: 'App',
-  components: { ModalOne, ModalTwo },
+  components: { ModalOne, ModalTwo, NavBar },
   data (){
     return {
       title: 'welcome to vue motherfuckerssssss',
@@ -82,9 +90,20 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
+  background: crimson;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none; 
+  border-radius: 4px;
 }
 </style>

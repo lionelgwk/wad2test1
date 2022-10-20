@@ -6,9 +6,7 @@
                 <slot name="links"></slot>
             </div>
         </div>
-
     </div>
-
 </template>
 
 
