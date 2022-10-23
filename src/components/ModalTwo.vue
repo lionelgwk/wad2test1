@@ -1,6 +1,6 @@
 <template>
     <div class="backdrop" @click.self="closeModalTwo">
-        <div class="modal">
+        <div class="modal2">
             <slot></slot>
             <div class="actions">
                 <slot name="hyperlinks"></slot>
@@ -23,7 +23,7 @@
 </script>
 
 <style>
-    .modal {
+    .modal2 {
         width: 400px;
         padding: 20px;
         margin: 100px auto;
@@ -40,23 +40,23 @@
         height: 100%;
     }
     
-    .modal h1 {
+    .modal2 h1 {
         color: #03cfb4;
         border: none;
         padding: 0;
     }
     
-    .modal p {
+    .modal2 p {
         font-style: normal;
     }
     
-    .modal .action {
+    .modal2 .action {
         text-align: center;
         margin: 30px 0px 10px 0px;
         color: #333;
     }
     
-    .modal .actions a{
+    .modal2 .actions a{
         color: #333;
         padding: 8px;
         border: 1px solid #eee;
