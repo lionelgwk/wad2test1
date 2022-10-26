@@ -3,7 +3,9 @@
     <NavBar></NavBar>
   </nav>
   <router-view/>
-
+  <div class="filler">
+    &nbsp;
+  </div>
   <h1>{{title}}</h1>
     <p>Welcome!</p>
     <div v-if="showModal">
@@ -51,7 +53,7 @@
   import NavBar from './components/NavBar.vue'
   import ModalOne from './components/ModalOne.vue'
   import ModalTwo from './components/ModalTwo.vue'
-import PageFooter from './components/PageFooter.vue'
+  import PageFooter from './components/PageFooter.vue'
 
 
 
@@ -85,27 +87,9 @@ export default {
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+
+.filler {
+  padding-top: 60px;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-nav a.router-link-exact-active {
-  color: white;
-  background: crimson;
-}
-
-button {
-  margin: 0 10px;
-  padding: 10px;
-  border: none; 
-  border-radius: 4px;
-}
 </style>

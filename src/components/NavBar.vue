@@ -45,7 +45,10 @@
 
 <style>
 nav {
-  padding: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
 }
 
 nav a {
