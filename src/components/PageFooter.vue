@@ -25,9 +25,8 @@
 
     footer {
         width: 100%;
-        position: fixed;
-        bottom: 0;
         padding-right: 30px;
+        z-index: 998;
     }
 
 </style>
