@@ -4,6 +4,11 @@
       <NavBar></NavBar>
     </nav>
     <router-view/>
+
+    <div ref="mapDiv" style="width: 100%; height: 80vh">
+      <GoogleMap></GoogleMap>
+    </div>
+
     <PageFooter></PageFooter>
   </body>
     
@@ -11,15 +16,16 @@
 
 
 <script>
+  /* eslint-disable no-undef */
 
   import NavBar from './components/NavBar.vue'
   import PageFooter from './components/PageFooter.vue'
-
-
+  import GoogleMap from './components/GoogleMap.vue'
 
 export default {
   name: 'App',
-  components: { NavBar, PageFooter },
+  components: { NavBar, GoogleMap, PageFooter },
+
   data (){
     return {
 
