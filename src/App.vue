@@ -1,11 +1,11 @@
 <template>
-  <nav>
-    <NavBar></NavBar>
-  </nav>
-  <router-view/>
-
-
-  <PageFooter></PageFooter>
+  <body>
+    <nav>
+      <NavBar></NavBar>
+    </nav>
+    <router-view/>
+    <PageFooter></PageFooter>
+  </body>
     
 </template>
 
@@ -27,8 +27,7 @@ export default {
   },
   methods: {
 
-  }
-  
+  },
 }
 </script>
 
@@ -40,6 +39,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+
 
 
 
