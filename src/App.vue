@@ -3,20 +3,24 @@
     <NavBar></NavBar>
   </nav>
   <router-view/>
-
+  <div class="filler">
+    &nbsp;
+  </div>
   <h1>{{title}}</h1>
     <p>Welcome!</p>
     <div v-if="showModal">
       <ModalOne theme="sale" @close="toggleModal">
         <template v-slot:links>
-          <a href="#">Register Here!</a>
-          <a href="">Get PYOLO Merch</a>
+          <a href="#">Click here</a>
+          <a href="#">Or click here!</a>
         </template>
-        <h1>Sign up for Project YOLO!</h1>
-        <p>Get them by 12/12 for half price!</p>
+        <h1>Hello there!!!</h1>
+        <p>We need to get our shit together!</p>
       </ModalOne>
     </div>
     <button @click ="toggleModal">Open Modal</button>
+ 
+    <br>
 
     <div v-if="showModalTwo">
       <ModalTwo @closeTheModal="toggleModalTwo">
@@ -37,6 +41,8 @@
     <div class="collapse py-2" id="collapseTarget">
         This is the toggle-able content!
     </div>
+
+    <PageFooter></PageFooter>
     
 </template>
 
@@ -47,17 +53,15 @@
   import NavBar from './components/NavBar.vue'
   import ModalOne from './components/ModalOne.vue'
   import ModalTwo from './components/ModalTwo.vue'
+  import PageFooter from './components/PageFooter.vue'
 
 
 
 export default {
   name: 'App',
-  components: { ModalOne, ModalTwo, NavBar },
+  components: { ModalOne, ModalTwo, NavBar, PageFooter },
   data (){
     return {
-      title: 'welcome to vue motherfuckerssssss',
-      header: "Sign up for Project YOLO!",
-      text: "Get them by 12/12 for half price!",
       showModal: false,
       showModalTwo: false
     }
@@ -83,27 +87,9 @@ export default {
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+
+.filler {
+  padding-top: 60px;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-nav a.router-link-exact-active {
-  color: white;
-  background: crimson;
-}
-
-button {
-  margin: 0 10px;
-  padding: 10px;
-  border: none; 
-  border-radius: 4px;
-}
 </style>

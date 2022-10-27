@@ -1,6 +1,42 @@
 <template>
-    <router-link :to="{ name: 'home'}">Home</router-link> |
+  <nav class="navbar navbar-expand-md bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img width="30" height="24" src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png"> PartyGoers</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-nowrap" aria-current="page">
+              <router-link :to="{ name: 'home'}">Home</router-link>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-nowrap">
+              <router-link :to="{ name: 'about'}">About</router-link>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-nowrap">
+              <router-link :to="{ name: 'myevents'}">My Events</router-link>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-nowrap ">
+              <router-link :to="{ name: 'createevent'}">Create A Party</router-link>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- <router-link :to="{ name: 'home'}">Home</router-link> |
     <router-link :to="{ name: 'about'}">About</router-link>
+    <router-link :to="{ name: 'events'}">My Events</router-link> -->
 </template>
 
 <script>
@@ -9,7 +45,10 @@
 
 <style>
 nav {
-  padding: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
 }
 
 nav a {
@@ -20,7 +59,7 @@ nav a {
   border-radius: 4px;
 }
 
-nav a.router-link-exact-active {
+nav a .router-link-exact-active {
   color: white;
   background: crimson;
 }
@@ -31,4 +70,10 @@ button {
   border: none; 
   border-radius: 4px;
 }
+
+.create {
+  color: white;
+  background: green;
+}
+
 </style>
