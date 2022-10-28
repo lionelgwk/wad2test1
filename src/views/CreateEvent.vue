@@ -17,7 +17,8 @@
   
 <script>
   // @ is an alias to /src
-  /* eslint-disable no-undef */
+
+  /* eslint-disable */
   import { onMounted, ref } from "vue";
   import { computed } from 'vue'
   import { useGeolocation } from '../useGeolocation'
