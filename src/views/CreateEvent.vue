@@ -3,7 +3,7 @@
     <div class="pt-2 font-size-xl mb-3">Create Address</div>
 
     <button class="btn btn-success" @click="triggerReady">
-      Trigger map ready event
+      Load Map
     </button>
     <hr />
 
@@ -31,7 +31,7 @@
           {{
             place.country != null
               ? place.country + ", " + place.city
-              : "Please search for an address before procceeding"
+              : "Please search for an address before proceeding"
           }}
         </div>
 
@@ -41,7 +41,7 @@
         </div>
 
         <div class="text-uppercase color-secondary mb-1">
-          Address descriotion
+          Address description
         </div>
         <div class="mb-3">
           <textarea
@@ -51,22 +51,8 @@
             v-model="place.address_description"
           ></textarea>
         </div>
-
-        <div class="mb-2">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="primary_address"
-              type="checkbox"
-              v-model="form_data.primary"
-            />
-            <label class="form-check-label" for="primary_address">
-              Make Primary Address
-            </label>
-          </div>
-        </div>
         <div class="mt-3">
-          <button class="btn btn-primary w-100">Save address</button>
+          <button class="btn btn-primary w-100">Save as Party location</button>
         </div>
       </div>
     </div>
