@@ -2,10 +2,9 @@
   <div class="container">
     <div class="pt-2 font-size-xl mb-3">Create Address</div>
 
-    <button class="btn btn-success" @click="triggerReady">
+    <button class="btn btn-danger my-4" @click="triggerReady">
       Load Map
     </button>
-    <hr />
 
     <div class="row">
       <div class="col-md-8">
@@ -52,7 +51,7 @@
           ></textarea>
         </div>
         <div class="mt-3">
-          <button class="btn btn-primary w-100">Save as Party location</button>
+          <button class="btn btn-danger w-100">Save as Party location</button>
         </div>
       </div>
     </div>
