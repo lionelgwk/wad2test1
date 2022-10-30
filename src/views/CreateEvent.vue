@@ -25,23 +25,23 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="text-uppercase color-secondary mb-1">Address</div>
+        <h5 class="text-uppercase color-secondary mb-1">Country</h5>
         <div class="mb-3 font-weight-bold">
           {{
             place.country != null
-              ? place.country + ", " + place.city
+              ? place.country 
               : "Please search for an address before proceeding"
           }}
         </div>
 
-        <div class="text-uppercase color-secondary mb-1">Zip code</div>
+        <h5 class="text-uppercase color-secondary mb-1">Zip code</h5>
         <div class="mb-3">
           <input type="text" v-model="place.zip_code" class="form-control" />
         </div>
 
-        <div class="text-uppercase color-secondary mb-1">
+        <h5 class="text-uppercase color-secondary mb-1">
           Address description
-        </div>
+        </h5>
         <div class="mb-3">
           <textarea
             class="form-control"
@@ -77,13 +77,11 @@ export default {
         zoom: 10,
       },
       manually: {
-        address_description: "21 Dhjetori, Tirana, Albania",
-        city: "Tirana",
-        country: "Albania",
-        lat: 41.3267905,
-        lng: 19.8060475,
-        state: "Tirana County",
-        zip_code: "",
+        address_description: "Singapore Management University (SMU)",
+        country: "Singapore",
+        lat: 1.296568,
+        lng: 103.852119,
+        zip_code: "S178903",
         zoom: 17,
       },
       place: {},
