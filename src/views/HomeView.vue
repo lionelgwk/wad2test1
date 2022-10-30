@@ -31,6 +31,19 @@ const bgImage =
                 >Read more</MaterialButton
               >
             </div> -->
+            <div class="text-white">
+              <div>
+              Enter your username:
+              <input type="text" id="username" placeholder="Username">
+            </div>
+            <div>
+              Enter your password:
+              <input type="password" id="password" class="my-2" placeholder="Password">
+            </div>
+            <div>
+              <button class="btn btn-danger">Login</button>
+            </div>
+            </div>
           </div>
         </div>
       </div>
