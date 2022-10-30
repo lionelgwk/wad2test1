@@ -5,7 +5,7 @@
                 <div class="card border-0">
                     <div class="card-body">
                         <h5 class="card-title">Know What's Around You</h5>
-                        <p class="card-text">Our application offers you the most popular activities based on your desired destination.</p>
+                        <p class="card-text">Our website offers you the most popular activities based on your desired destination.</p>
                     </div>
                 </div>
             </div>
