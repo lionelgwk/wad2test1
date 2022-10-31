@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-4" data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
+            <div class="col-sm-4" data-aos="fade-down" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
                     <div class="card-body">
                         <h5 class="card-title">Plan Together</h5>
