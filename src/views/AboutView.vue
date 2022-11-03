@@ -12,7 +12,7 @@
   <h1> Register here! </h1>
       <p>Enter your email: <input type='text' placeholder="Email" v-model='email'/></p>
       <p>Create a password: <input type='password' placeholder="Password" v-model='password'/></p>
-      <p> <button @click="register"> Create Account </button> </p>
+      <p> <button @click="register" class="btn btn-danger"> Create Account </button> </p>
       
 
 </template>

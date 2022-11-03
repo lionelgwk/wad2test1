@@ -7,36 +7,51 @@
       loading="lazy"
     >
 
+    <br>
     <h1 class="text-white text-center mb-4">Welcome to <span class="party">Party</span>Goers</h1>
     <h4 class="text-white text-center fst-italic">The best way to plan outings with your friends.
     </h4>
 
-  <h1> Create an Account </h1>
-  <p> <input type='text' placeholder="Email" v-model='email'/> </p>
-  <p> <input type='password' placeholder="Password" v-model='password'/> </p>
-  <p> <button @click="register"> Submit </button> </p>
-  </div>
+    <h1 class="text-white"> Login to Your Account </h1>
+    <p class="text-white">Enter your email: <input type='text' placeholder="Email" v-model='email'/> </p>
+    <p class="text-white">Enter your password: <input type='password' placeholder="Password" v-model='password'/> </p>
+    <p v-if="errMsg"> {{ errMsg }} </p>
+    <p> <button @click="signIn" class="btn btn-danger"> Login </button> </p>
+
+</div>
+
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'vue-router' // import router
-
 const email = ref('')
 const password = ref('')
-
+const errMsg = ref() // ERROR MESSAGE
 const router = useRouter() // get a reference to our vue router
-const register = () => {
-  createUserWithEmailAndPassword(getAuth(),email.value, password.value) // need .value because ref()
-  .then((data) => {
-    console.log('Successfully registered!');
-    router.push('/feed') // redirect to the feed
-  })
-  .catch(error => {
-    console.log(error.code)
-    alert(error.message);
-  });
+const signIn = () => { // we also renamed this method 
+  signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE CHANGED
+    .then((data) => {
+      console.log('Successfully logged in!');
+      router.push('/feed') // redirect to the feed
+    })
+    .catch(error => {
+      switch (error.code) {
+        case 'auth/invalid-email':
+            errMsg.value = 'Invalid email'
+            break
+        case 'auth/user-not-found':
+            errMsg.value = 'No account with that email was found'
+            break
+        case 'auth/wrong-password':
+            errMsg.value = 'Incorrect password'
+            break  
+        default:
+            errMsg.value = 'Email or password was incorrect'
+            break
+      }
+    });
 }
 
 const bgImage =
