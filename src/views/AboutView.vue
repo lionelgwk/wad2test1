@@ -3,19 +3,17 @@
     <div class="carousel-bg">
       <AboutCarousel></AboutCarousel>
     </div>
-
-    <header>
-      <h1>The only right way to meet up with friends.</h1>
-    </header>
-    <div>
-      <p class="subtitle">We are your solution to plan the  <span class="perfect">perfect</span>  getaway with your friends!</p>
-    </div>
   </div>
 
   <hr>
 
   <AboutCard></AboutCard>
 
+  <h1> Register here! </h1>
+      <p>Enter your email: <input type='text' placeholder="Email" v-model='email'/></p>
+      <p>Create a password: <input type='password' placeholder="Password" v-model='password'/></p>
+      <p> <button @click="register"> Create Account </button> </p>
+      
 
 </template>
 
@@ -51,7 +49,6 @@ header {
   margin-right: 0;
   top: 50%;
   left: 50%;
-  font-family: 'Shadows Into Light', cursive;
   font-weight: 200;
   font-size: 3rem;
   color: orange;
@@ -60,14 +57,13 @@ header {
 }
 
 .perfect {
-  font-family: 'Dancing Script', cursive;
-  font-size: 3rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, cursive;
+  font-size: 2rem;
 }
 
 .subtitle {
   position: relative;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1.5rem;
   color: burlywood;
   z-index: 1000;
@@ -79,7 +75,7 @@ h1 {
 
 .carousel-bg {
   margin-top: 60px;
-  background-color: rgb(83, 5, 122);
+  background-color:crimson;
 }
 
 </style>

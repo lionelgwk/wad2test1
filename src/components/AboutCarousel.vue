@@ -3,18 +3,48 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="../assets/pic1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1>The only right way to meet up with friends.</h1>
+                    <div>
+                        <p class="subtitle">We are your solution to planning the perfect outing!</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
                 <img src="../assets/pic2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1>The only right way to meet up with friends.</h1>
+                    <div>
+                        <p class="subtitle">We are your solution to planning the perfect outing!</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
                 <img src="../assets/pic3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1>The only right way to meet up with friends.</h1>
+                    <div>
+                        <p class="subtitle">We are your solution to planning the perfect outing!</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
                 <img src="../assets/pic4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1>The only right way to meet up with friends.</h1>
+                    <div>
+                    <p class="subtitle">We are your solution to planning the perfect outing!</p>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item">
                 <img src="../assets/pic5.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1>The only right way to meet up with friends.</h1>
+                    <div>
+                        <p class="subtitle">We are your solution to planning the perfect outing!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
