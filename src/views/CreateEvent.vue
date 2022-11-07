@@ -1,18 +1,13 @@
 <template>
-    <!-- <div class="createevent">
-      <div ref="mapDiv">
-        <GoogleMap api-key="AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4" style="width: 100%; height: 500px" :center="center" :zoom="15">
-              <Marker :options="{ position: center }" />
-        </GoogleMap>
-      </div>
-    </div> -->
+    <div class="createevent">
 
-    <div>
-      <h4>Position</h4>
-      <h5>Latitude: {{currPos.lat.toFixed(2)}}</h5>
-      <h5>Longitude: {{currPos.lng.toFixed(2)}}</h5>
+      <div>
+        <h4>Position</h4>
+        <h5>Latitude: {{currPos.lat.toFixed(2)}}</h5>
+        <h5>Longitude: {{currPos.lng.toFixed(2)}}</h5>
+      </div>
+      <div ref="mapDiv" style="width: 100%; height: 80vh"/>
     </div>
-    <div ref="mapDiv" style="width: 100%; height: 80vh"/>
   </template>
   
 <script>
@@ -20,11 +15,11 @@
 
   /* eslint-disable */
   import { onMounted, ref } from "vue";
-  import { computed } from 'vue'
-  import { useGeolocation } from '../useGeolocation'
-  import { Loader } from '@googlemaps/js-api-loader'
+  import { computed } from 'vue';
+  import { useGeolocation } from '../useGeolocation';
+  import { Loader } from '@googlemaps/js-api-loader';
   import { GoogleMap, Marker } from "vue3-google-map";
-  import { watch } from 'vue'
+  import { watch } from 'vue';
 
   const GOOGLE_MAPS_API_KEY = 'AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4'
 
