@@ -18,6 +18,9 @@
 
   import NavBar from './components/NavBar.vue'
   import PageFooter from './components/PageFooter.vue'
+  import VueGeolocation from "vue3-geolocation";
+  import GMaps from "vuejs3-google-maps";
+  
 
 export default {
   name: 'App',
@@ -25,7 +28,7 @@ export default {
 
   data (){
     return {
-
+      VueGeolocation, GMaps
     }
   },
   methods: {
@@ -42,9 +45,5 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
-
-
-
 
 </style>
