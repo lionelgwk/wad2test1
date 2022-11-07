@@ -16,6 +16,11 @@
 
   <AboutCard></AboutCard>
 
+  <button class="btn btn-warning" data-aos="fade-up">Start Partying!</button>
+
+
+  
+
 
 </template>
 
@@ -80,6 +85,19 @@ h1 {
 .carousel-bg {
   margin-top: 60px;
   background-color: rgb(83, 5, 122);
+}
+
+
+.btn {
+  font-weight: 200;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(83, 5, 122);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 </style>

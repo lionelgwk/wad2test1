@@ -1,79 +1,74 @@
-<script setup>
-//Vue Material Kit 2 components
-
-// image
-const bgImage =
-  "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80";
-</script>
 <template>
-  <header>
-    <div
-      class="page-header min-vh-100"
-      :style="{
-        backgroundImage: `url(${bgImage})`
-      }"
-      loading="lazy"
-    >
+
+      <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+
+
+
+  <link id="pagestyle" href="../assets/css/material-kit.css?v=3.0.4" rel="stylesheet" />
+
+  <div class="home">
+    <h1>PartyGoers</h1>
+  </div>
+
+  <header class="header-2">
+    <div class="page-header min-vh-75 relative">
+      <span class="mask bg-gradient-primary opacity-4"></span>
       <div class="container">
         <div class="row">
-          <div
-            class="col-lg-6 col-md-7 d-flex justify-content-center flex-column"
-          >
-            <h1 class="text-white text-center mb-4">Welcome to <span class="party">Party</span>Goers</h1>
-            <p class="text-white opacity-8 lead pe-5 me-5">
-              The best way to plan outings with your friends.
-            </p>
-            <!-- <div class="buttons">
-              <MaterialButton color="white" class="mt-4"
-                >Get Started</MaterialButton
-              >
-              <MaterialButton color="none" class="text-white shadow-none mt-4"
-                >Read more</MaterialButton
-              >
-            </div> -->
-            <div class="text-white">
-              <div>
-              Enter your username:
-              <input type="text" id="username" placeholder="Username">
-            </div>
-            <div>
-              Enter your password:
-              <input type="password" id="password" class="my-2" placeholder="Password">
-            </div>
-            <div>
-              <button class="btn btn-danger">Login</button>
-            </div>
-            </div>
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5">Material Kit 2</h1>
+            <p class="lead text-white mt-3">Free & Open Source Web UI Kit built over Bootstrap 5. <br/> Join over 1.6 million developers around the world. </p>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  
 </template>
 
 
 
-<script>
-// @ is an alias to /src
 
-  
+
+
+
+
+
+<script>
+// @ is an alias to /src 
 export default {
-  name: 'HomeView',
-  components: {
-}
+    name: 'HomeView',
+    components: {
+  }
 }
 </script>
 
 <style scoped>
-h1 {
-  margin-top: 60px;
-  color: black;
-  font-weight: bold;
-}
+  h1 {
+    margin-top: 60px;
+    color: orange;
+    font-weight: bold;
+  }
 
-.party {
-  margin-top: 60px;
-  color: crimson;
-  font-weight: bold;
-}
+  .page-header{
+    background-image: url('../assets/img/bg2.jpg');
+    background-size: cover;
+    margin: auto;
+    height: 60vh;
+    width: 100%;
+  }
+
 </style>
