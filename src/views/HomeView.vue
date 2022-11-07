@@ -1,22 +1,24 @@
 <template>
   <div
       class="page-header min-vh-100"
-      :style="{
-        backgroundImage: `url(${bgImage})`
-      }"
       loading="lazy"
     >
 
     <br>
-    <h1 class="text-white text-center mb-4">Welcome to <span class="party">Party</span>Goers</h1>
-    <h4 class="text-white text-center fst-italic">The best way to plan outings with your friends.
+    <h1 class="text text-center mb-4">Welcome to <span class="party">Party</span>Goers</h1>
+    <h4 class="text-center fst-italic">The best way to plan outings with your friends.
     </h4>
 
-    <h1 class="text-white"> Login to Your Account </h1>
-    <p class="text-white">Enter your email: <input type='text' placeholder="Email" v-model='email'/> </p>
-    <p class="text-white">Enter your password: <input type='password' placeholder="Password" v-model='password'/> </p>
+    <h1 class="text"> Login to Your Account </h1>
+    <p class="text">Enter your email: <input type='text' placeholder="Email" v-model='email'/> </p>
+    <p class="text">Enter your password: <input type='password' placeholder="Password" v-model='password'/> </p>
     <p v-if="errMsg"> {{ errMsg }} </p>
     <p> <button @click="signIn" class="btn btn-danger"> Login </button> </p>
+    <div>
+      <img src="@/assets/pic6.jpg">
+    </div>
+
+    
 
 </div>
 
@@ -53,9 +55,6 @@ const signIn = () => { // we also renamed this method
       }
     });
 }
-
-const bgImage =
-  "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80";
 
 </script>
 

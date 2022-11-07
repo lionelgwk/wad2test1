@@ -9,8 +9,8 @@
   export default {
     name: 'MyEvents',
     components: {
-      Event  
-    }
+      Event
+      }
   }
   </script>
   

@@ -59,6 +59,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald&family=Raleway:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nunito:wght@300&family=Oswald&family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
 
 header {
@@ -77,7 +78,6 @@ header {
 }
 
 .perfect {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, cursive;
   font-size: 2rem;
 }
 
