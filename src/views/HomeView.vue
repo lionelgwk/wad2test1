@@ -1,86 +1,74 @@
 <template>
-  <div
-      class="page-header min-vh-100"
-      loading="lazy"
-    >
 
-    <br>
-    <h1 class="text text-center mb-4">Welcome to <span class="party">Party</span>Goers</h1>
-    <h4 class="text-center fst-italic">The best way to plan outings with your friends.
-    </h4>
+      <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
-    <h1 class="text"> Login to Your Account </h1>
-    <p class="text">Enter your email: <input type='text' placeholder="Email" v-model='email'/> </p>
-    <p class="text">Enter your password: <input type='password' placeholder="Password" v-model='password'/> </p>
-    <p v-if="errMsg"> {{ errMsg }} </p>
-    <p> <button @click="signIn" class="btn btn-danger"> Login </button> </p>
-    <div>
-      <img src="@/assets/pic6.jpg">
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+
+
+
+  <link id="pagestyle" href="../assets/css/material-kit.css?v=3.0.4" rel="stylesheet" />
+
+  <div class="home">
+    <h1>PartyGoers</h1>
+  </div>
+
+  <header class="header-2">
+    <div class="page-header min-vh-75 relative">
+      <span class="mask bg-gradient-primary opacity-4"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5">Material Kit 2</h1>
+            <p class="lead text-white mt-3">Free & Open Source Web UI Kit built over Bootstrap 5. <br/> Join over 1.6 million developers around the world. </p>
+          </div>
+        </div>
+      </div>
     </div>
+  </header>
 
-    
-
-</div>
-
+  
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useRouter } from 'vue-router' // import router
-const email = ref('')
-const password = ref('')
-const errMsg = ref() // ERROR MESSAGE
-const router = useRouter() // get a reference to our vue router
-const signIn = () => { // we also renamed this method 
-  signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE CHANGED
-    .then((data) => {
-      console.log('Successfully logged in!');
-      router.push('/feed') // redirect to the feed
-    })
-    .catch(error => {
-      switch (error.code) {
-        case 'auth/invalid-email':
-            errMsg.value = 'Invalid email'
-            break
-        case 'auth/user-not-found':
-            errMsg.value = 'No account with that email was found'
-            break
-        case 'auth/wrong-password':
-            errMsg.value = 'Incorrect password'
-            break  
-        default:
-            errMsg.value = 'Email or password was incorrect'
-            break
-      }
-    });
-}
 
-</script>
+
+
+
+
 
 
 
 <script>
-// @ is an alias to /src
-
-  
+// @ is an alias to /src 
 export default {
-  name: 'HomeView',
-  components: {
-}
+    name: 'HomeView',
+    components: {
+  }
 }
 </script>
 
 <style scoped>
-h1 {
-  margin-top: 60px;
-  color: black;
-  font-weight: bold;
-}
+  h1 {
+    margin-top: 60px;
+    color: orange;
+    font-weight: bold;
+  }
 
-.party {
-  margin-top: 60px;
-  color: crimson;
-  font-weight: bold;
-}
+  .page-header{
+    background-image: url('../assets/img/bg2.jpg');
+    background-size: cover;
+    margin: auto;
+    height: 60vh;
+    width: 100%;
+  }
+
 </style>
