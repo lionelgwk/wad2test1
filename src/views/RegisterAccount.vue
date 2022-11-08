@@ -12,7 +12,7 @@
   // @ is an alias to /src
     /* eslint-disable */
     import { ref } from "vue";
-    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
     import router from '@/router'
     const email = ref("");
     const password = ref("");
@@ -29,9 +29,18 @@
             });
     }
 
-//   const signInWithGoogle = () => {
-    
-// }
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider)
+        .then((result) => {
+            console.log(result.user);
+            router.push("/myevents");
+        })
+        .catch((error) => {
+            console.log(error.code);
+            alert(error.message);
+        });
+}
   
 //   export default {
 //     name: 'RegisterAccount',

@@ -44,9 +44,18 @@
             });
     }
 
-//   const signInWithGoogle = () => {
-    
-// }
+    const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(getAuth(), provider)
+            .then((result) => {
+                console.log(result.user);
+                router.push("/myevents");
+            })
+            .catch((error) => {
+                console.log(error.code);
+                alert(error.message);
+            });
+    }
   
 //   export default {
 //     name: 'RegisterAccount',
