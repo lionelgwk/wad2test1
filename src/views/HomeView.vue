@@ -27,7 +27,15 @@
       <div class="home"><br>
     <h1><span class="party">Party</span><br>
       Goers</h1>
-      <p>We're here to make planning exciting<br> outings with your friends easier!</p>
+      <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
+      <p class="events">Your upcoming events:</p>
+      <ul class="eventlist">
+        <li>CCA outing</li>
+        <li>Secondary school gathering</li>
+        <li>Family reunion</li>
+      </ul><br><br>
+
+      <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Events</router-link> to view more details.</p>
   </div>
     </div>
   </header>
@@ -50,7 +58,7 @@ export default {
 
 <style scoped>
   h1 {
-    padding-top: 150px;
+    padding-top: 110px;
     font-size: 100px;
     text-align: left;
     padding-left:130px;
@@ -59,13 +67,27 @@ export default {
 
   }
 
-  p {
-    font-size: 30px;
+  .desc {
+    font-size: 20px;
+    text-align: left;
+    padding-left:130px;
+    font-family: 'Varela Round', sans-serif;
+  }
+
+  .events {
+    font-size: 40px;
     text-align: left;
     padding-left:130px;
     font-weight: bold;
     font-family: 'Varela Round', sans-serif;
+    color: crimson;
+  }
 
+  .eventlist {
+    font-size: 20px;
+    text-align: left;
+    padding-left:160px;
+    font-family: 'Varela Round', sans-serif;
   }
 
   .page-header{
@@ -75,8 +97,15 @@ export default {
     height: 60vh;
     width: 100%;
     font-family: 'Varela Round', sans-serif;
-
   }
+
+  .click {
+    font-size: 20px;
+    text-align: left;
+    padding-left:130px;
+    font-family: 'Varela Round', sans-serif;
+  }
+
 
 .party {
   color:crimson;
