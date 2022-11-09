@@ -6,6 +6,8 @@ import MyEvents from '../views/MyEvents.vue'
 import CreateEvent from '../views/CreateEvent.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
 import SignIn from '../views/SignIn.vue'
+import HomeLogin from '../views/HomeLogin.vue'
+
 
 const routes = [
   {
@@ -22,6 +24,14 @@ const routes = [
     path: '/myevents',
     name: 'myevents',
     component: MyEvents,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    path: '/homelogin',
+    name: 'homelogin',
+    component: HomeLogin,
     meta: {
       requiresAuth: true,
     }

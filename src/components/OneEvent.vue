@@ -1,8 +1,12 @@
 <template>
     <div class="myevents px-4"><br>
       <br><br><br>
-      <h1>Your parties</h1>
-      <div class="row">
+      <div data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
+        <h1>My Parties</h1>
+      <p>View all your upcoming events here!</p>
+      </div>
+      
+      <div class="row" data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <div class="col-lg-4 d-flex justify-content-center">
           <div class="card my-2" style="width: 18rem;">
           <div class="card-body">
@@ -76,7 +80,13 @@
   <style>
     h1 {
       font-family: 'Varela Round', sans-serif;
-      font-weight:300px;
+      font-weight: bold;
+
+    }
+
+    p {
+      font-family: 'Varela Round', sans-serif;
+      font-size:20px
     }
 
 

@@ -25,11 +25,16 @@
       }"
       loading="lazy">
       <div class="home" data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
-    <h1><span class="party">Party</span><br>
-      Goers</h1>
+    <h1>Welcome,<br><span class="party">User</span></h1>
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
+      <p class="events">Your upcoming events:</p>
+      <ul class="eventlist">
+        <li>CCA outing</li>
+        <li>Secondary school gathering</li>
+        <li>Family reunion</li>
+      </ul><br><br>
 
-      <p class="click">Click <router-link :to="{ name: 'signin'}" class="text-danger">here</router-link> to Sign In.</p>
+      <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Events</router-link> to view more details.</p>
   </div>
     </div>
   </header>
@@ -52,7 +57,7 @@ export default {
 
 <style scoped>
   h1 {
-    padding-top: 180px;
+    padding-top: 110px;
     font-size: 100px;
     text-align: left;
     padding-left:130px;

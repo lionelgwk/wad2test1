@@ -20,7 +20,7 @@
           </li>
           <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap">
-              <router-link :to="{ name: 'myevents'}">My Events</router-link>
+              <router-link :to="{ name: 'myevents'}">My Parties</router-link>
             </a>
           </li>
         </ul>
