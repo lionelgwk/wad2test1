@@ -25,7 +25,7 @@
       }"
       loading="lazy">
       <div class="home" data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
-    <h1>Welcome,<br><span class="party">User</span></h1>
+    <h1>Welcome,<br><span class="party">{{name}}</span></h1>
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
       <p class="events">Your upcoming events:</p>
       <ul class="eventlist">
@@ -48,7 +48,22 @@
 
 <script>
 // @ is an alias to /src 
+import { ref } from 'vue';
+import { getAuth } from "firebase/auth";
 export default {
+  setup(){
+    const name = ref("");
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user){
+      name.value = user.email.split('@')[0];
+    }
+    else{
+      name.value = "Partygoer";
+    }
+
+    return {name}
+  },
     name: 'HomeView',
     components: {
   }
