@@ -60,11 +60,13 @@ h1 {
   margin-top: 60px;
   color: black;
   font-weight: bold;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .party {
   margin-top: 60px;
   color: crimson;
   font-weight: bold;
+  font-family: 'Varela Round', sans-serif;
 }
 </style>

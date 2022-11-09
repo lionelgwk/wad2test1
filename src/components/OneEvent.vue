@@ -1,6 +1,6 @@
 <template>
     <div class="myevents px-4"><br>
-      <br><br>
+      <br><br><br>
       <h1>Your parties</h1>
       <div class="row">
         <div class="col-lg-4 d-flex justify-content-center">
@@ -72,3 +72,12 @@
       }
     }
     </script>    
+
+  <style>
+    h1 {
+      font-family: 'Varela Round', sans-serif;
+      font-weight:300px;
+    }
+
+
+  </style>

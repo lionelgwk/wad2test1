@@ -59,3 +59,10 @@ export default {
       }
   }
   </script>
+
+<style>
+.modal-content {
+  font-family: 'Varela Round', sans-serif;
+
+}
+</style>

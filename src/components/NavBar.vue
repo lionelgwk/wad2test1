@@ -24,7 +24,7 @@
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav my-auto">
           <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap ">
               <router-link :to="{ name: 'createevent'}">Create A Party</router-link>
