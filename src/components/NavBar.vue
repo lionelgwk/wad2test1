@@ -8,9 +8,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-lg-0">
-          <li class="nav-item">
+          <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link active text-nowrap" aria-current="page">
               <router-link :to="{ name: 'home'}">Home</router-link>
+            </a>
+          </li>
+          <li v-if="isLoggedIn" class="nav-item">
+            <a class="nav-link active text-nowrap" aria-current="page">
+              <router-link :to="{ name: 'homelogin'}">Home</router-link>
             </a>
           </li>
           <li v-if="!isLoggedIn" class="nav-item">

@@ -24,8 +24,8 @@
         backgroundImage: 'https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
       }"
       loading="lazy">
-      <div class="home" data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
-    <h1>Welcome,<br><span class="party">User</span></h1>
+      <div class="home" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
+    <h1>Welcome,<br><span class="party">Shar</span></h1>
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
       <p class="events">Your upcoming events:</p>
       <ul class="eventlist">
