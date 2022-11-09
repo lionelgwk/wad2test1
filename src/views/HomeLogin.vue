@@ -40,10 +40,7 @@
   </header>
 
 
-  
 </template>
-
-
 
 
 <script>
