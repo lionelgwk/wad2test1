@@ -18,8 +18,8 @@
 
   <link id="pagestyle" href="../assets/css/material-kit.css?v=3.0.4" rel="stylesheet" />
 
-  <div class="home">
-    <h1>PartyGoers</h1>
+  <div class="home"><br>
+    <h1><span class="party">Party</span>Goers</h1>
   </div>
 
   <header class="header-2">
@@ -59,7 +59,6 @@ export default {
 <style scoped>
   h1 {
     margin-top: 60px;
-    color: orange;
     font-weight: bold;
   }
 
@@ -70,5 +69,9 @@ export default {
     height: 60vh;
     width: 100%;
   }
+
+.party {
+  color:crimson
+}
 
 </style>
