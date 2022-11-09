@@ -8,26 +8,46 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-lg-0">
-          <li class="nav-item">
+          <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link active text-nowrap" aria-current="page">
               <router-link :to="{ name: 'home'}">Home</router-link>
             </a>
           </li>
-          <li class="nav-item">
+          <li v-if="isLoggedIn" class="nav-item">
+            <a class="nav-link active text-nowrap" aria-current="page">
+              <router-link :to="{ name: 'homelogin'}">Home</router-link>
+            </a>
+          </li>
+          <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap">
               <router-link :to="{ name: 'about'}">About</router-link>
             </a>
           </li>
-          <li class="nav-item">
+          <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap">
-              <router-link :to="{ name: 'myevents'}">My Events</router-link>
+              <router-link :to="{ name: 'myevents'}">My Parties</router-link>
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
+        <ul class="navbar-nav my-auto">
+          <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap ">
               <router-link :to="{ name: 'createevent'}">Create A Party</router-link>
+            </a>
+          </li>
+          <li v-if="isLoggedIn" class="nav-item">
+            <a class="nav-link text-nowrap ">
+              <button class="btn btn-dark" @click="handleSignOut">Sign Out</button>
+            </a>
+          </li>
+          <li v-if="!isLoggedIn" class="nav-item">
+            <a class="nav-link text-nowrap">
+              <router-link :to="{ name: 'registeraccount'}">Register</router-link>
+            </a>
+          </li>
+          <li v-if="!isLoggedIn" class="nav-item">
+            <a class="nav-link text-nowrap ">
+              <router-link :to="{ name: 'signin'}">Sign In</router-link>
             </a>
           </li>
         </ul>
@@ -39,7 +59,36 @@
     <router-link :to="{ name: 'events'}">My Events</router-link> -->
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"; 
+import router from "@/router";
+
+const isLoggedIn = ref(false);
+let auth;
+
+onMounted(() => {
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            isLoggedIn.value = true;
+        } else {
+            isLoggedIn.value = false;
+        }
+    });
+});
+
+function handleSignOut() {
+    signOut(auth)
+        .then(() => {
+            console.log("Successfully signed out!");
+            router.push("/");
+        })
+        .catch((error) => {
+            console.log(error.code);
+            alert(error.message);
+        });
+}
 </script>
 
 
@@ -50,6 +99,7 @@ nav {
   width: 100%;
   margin: 0;
   z-index: 9999;
+  font-family: 'Varela Round', sans-serif;
 }
 
 nav a {
@@ -58,11 +108,13 @@ nav a {
   text-decoration: none;
   padding: 10px;
   border-radius: 4px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 nav a .router-link-exact-active {
   color: white;
   background: crimson;
+  font-family: 'Varela Round', sans-serif;
 }
 
 button {
@@ -70,11 +122,15 @@ button {
   padding: 10px;
   border: none; 
   border-radius: 4px;
+  font-family: 'Varela Round', sans-serif;
+
 }
 
 .create {
   color: white;
   background: green;
+  font-family: 'Varela Round', sans-serif;
+
 }
 
 </style>

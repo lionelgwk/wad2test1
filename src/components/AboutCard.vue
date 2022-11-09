@@ -5,12 +5,12 @@
                 <div class="card border-0">
                     <div class="card-body">
                         <h5 class="card-title">Know What's Around You</h5>
-                        <p class="card-text">Our application offers you the most popular activities based on your desired destination.</p>
+                        <p class="card-text">Our website offers you the most popular activities based on your desired destination.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-4" data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
+            <div class="col-sm-4" data-aos="fade-down" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
                     <div class="card-body">
                         <h5 class="card-title">Plan Together</h5>
@@ -41,10 +41,12 @@
 .card-title {
     display: inline;
     border-bottom: solid 3px #f05537;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .card-text {
     margin-top: 10px;
+    font-family: 'Varela Round', sans-serif;
 }
 
 </style>

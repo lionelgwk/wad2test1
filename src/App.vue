@@ -18,6 +18,11 @@
 
   import NavBar from './components/NavBar.vue'
   import PageFooter from './components/PageFooter.vue'
+  import VueGeolocation from "vue3-geolocation";
+  import GMaps from "vuejs3-google-maps";
+
+  
+  
 
 export default {
   name: 'App',
@@ -25,7 +30,7 @@ export default {
 
   data (){
     return {
-
+      VueGeolocation, GMaps
     }
   },
   methods: {
@@ -35,16 +40,15 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Varela+Round&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Varela Round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
-
-
-
 
 </style>
