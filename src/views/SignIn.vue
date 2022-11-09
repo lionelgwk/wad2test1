@@ -13,7 +13,7 @@
   // @ is an alias to /src
     /* eslint-disable */
     import { ref } from "vue";
-    import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
     import router from '@/router'
     const email = ref("");
     const password = ref("");
