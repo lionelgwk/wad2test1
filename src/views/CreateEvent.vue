@@ -1,8 +1,9 @@
 <template>
   <div class="container">
-    <div class="pt-2 font-size-xl mb-3">Create Address</div>
+    <div class="pt-5"></div>
+    <h3 class="pt-5 font-size-xl mb-3">Choose your location</h3>
 
-    <button class="btn btn-danger my-4" @click="triggerReady">
+    <button class="btn btn-danger mb-4" @click="triggerReady">
       Load Map
     </button>
 
@@ -40,21 +41,29 @@
         </div>
 
         <h5 class="text-uppercase color-secondary mb-1">
-          Address description
+          Address
+        </h5>
+        <div class="mb-3">
+          <input type="text" v-model="place.address_description" class="form-control" />
+        </div>
+        <h5 class="text-uppercase color-secondary mb-1">
+          Suggested activities
         </h5>
         <div class="mb-3">
           <textarea
             class="form-control"
             cols="30"
             rows="5"
-            v-model="place.address_description"
+            v-model="place.suggested_activities"
           ></textarea>
         </div>
         <div class="mt-3">
-          <button class="btn btn-danger w-100">Save as Party location</button>
+          <button class="btn btn-danger w-100">Select location</button>
         </div>
       </div>
     </div>
+    <h3 class="pt-5 font-size-xl mb-3">Select your friends</h3>
+
   </div>
 </template>
 
@@ -74,7 +83,7 @@ export default {
         zoom: 2,
       },
       address: {
-        query: "Albania, Tirane", //If GPS fails, Find by address is triggered
+        query: "Singapore Management University", //If GPS fails, Find by address is triggered
         zoom: 10,
       },
       manually: {
@@ -84,6 +93,7 @@ export default {
         lng: 103.852119,
         zip_code: "S178903",
         zoom: 17,
+        suggested_activities: ''
       },
       place: {},
       form_data: {},

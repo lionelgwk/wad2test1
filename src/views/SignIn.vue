@@ -23,7 +23,7 @@
         signInWithEmailAndPassword(getAuth(), email.value, password.value)
             .then((data) => {
                 console.log("Successfully signed in!");
-                router.push('/myevents');
+                router.push('/homelogin');
             })
             .catch((error) => {
                 console.log(error.code);
@@ -69,6 +69,7 @@ h1 {
   margin-top: 60px;
   color: black;
   font-weight: bold;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .party {
