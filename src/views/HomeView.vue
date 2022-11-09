@@ -60,6 +60,8 @@ export default {
   h1 {
     margin-top: 60px;
     font-weight: bold;
+    font-family: 'Varela Round', sans-serif;
+
   }
 
   .page-header{
@@ -68,10 +70,14 @@ export default {
     margin: auto;
     height: 60vh;
     width: 100%;
+    font-family: 'Varela Round', sans-serif;
+
   }
 
 .party {
-  color:crimson
+  color:crimson;
+  font-family: 'Varela Round', sans-serif;
+
 }
 
 </style>

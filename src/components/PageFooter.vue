@@ -27,6 +27,7 @@
         width: 100%;
         padding-right: 30px;
         z-index: 998;
+        font-family: 'Varela Round', sans-serif;
     }
 
 </style>

@@ -53,7 +53,22 @@
 <script>
 </script>
 
-<style>
 
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Varela+Round&display=swap');
 
+h1 {
+  position: relative;
+  font-family: 'Varela Round', sans-serif;
+  color: white;
+  z-index: 1000;
+}
+.subtitle {
+  position: relative;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 200;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 1000;
+}
 </style>

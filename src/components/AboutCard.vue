@@ -41,10 +41,12 @@
 .card-title {
     display: inline;
     border-bottom: solid 3px #f05537;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .card-text {
     margin-top: 10px;
+    font-family: 'Varela Round', sans-serif;
 }
 
 </style>
