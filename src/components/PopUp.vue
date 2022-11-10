@@ -2,7 +2,7 @@
   <transition name="modal-fade">
     <div class="modal-overlay" @click="$emit('close-modal')">
       <div class="modal container" @click.stop>
-        <h6 class="text-align-center">CCA friends</h6>
+        <h6 class="text-align-center">{{ selected}}</h6>
         <p><span style="font-weight: bold;">Date:</span>19/11/2022</p>
         <p><span style="font-weight: bold;">Friends invited:</span> Lionel Goh, Ivan Yeo</p>          
         <button class="button">Back</button> 
