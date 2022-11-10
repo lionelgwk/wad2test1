@@ -16,6 +16,7 @@
                             <select v-model="type">
                                 <option value="restaurant" selected>Restaurants</option>
                                 <option value="bar">Bars</option>
+                                <option value="activities">Activities</option>
                             </select>
                         </div>
 
@@ -54,13 +55,14 @@
 
 <script> 
 import axios from 'axios';
+// import { onMounted } from 'vue';
 
 /* eslint-disable */
 export default {
     data() {
         return {
-            type: "",
-            radius: "",
+            type: "restaurant",
+            radius: "1",
             lat: 0,
             lng: 0,
             places: []
@@ -97,9 +99,9 @@ export default {
         },
         addLocationsToGoogleMaps(){
             var map = new google.maps.Map(this.$refs["map"],{
-                zoom: 15,
+                zoom: 17,
                 center: new google.maps.LatLng(this.lat, this.lng),
-                mapTypeId: google.maps.MapTypeId.ROADMAO
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
             var infowindow = new google.maps.InfoWindow();
@@ -123,6 +125,14 @@ export default {
                     infowindow.open(map, marker);
                 });
             })
+        }
+    },
+    mounted(){
+        this.findLocations();
+    },
+    watch: {
+        coordinates(){
+            this.findNearby();
         }
     }
 }
