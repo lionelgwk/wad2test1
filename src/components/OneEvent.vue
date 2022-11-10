@@ -1,4 +1,5 @@
 <template>
+  
     <div class="myevents px-4"><br>
       <br><br><br>
       <div data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
@@ -7,7 +8,7 @@
       </div>
       
       <div class="row" data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
-        <div v-for="event in events" class="col-lg-4 d-flex justify-content-center">
+        <div v-for="event in events" :key=event class="col-lg-4 d-flex justify-content-center">
           <div class="card my-2" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">{{ event.name }}</h5>
@@ -19,7 +20,6 @@
             data-bs-target="#exampleModal"
             class="button btn-danger"
             style="font-family:'Varela Round', sans-serif"
-            v-on:click="selected = event.name"
             > View Party
           </MaterialButton>
           </div>
@@ -33,6 +33,7 @@
   </template>
     <script>
     // @ is an alias to /src
+    
   
     import PopUp from '@/components/PopUp.vue'
     import MaterialButton from "@/components/MaterialButton.vue";

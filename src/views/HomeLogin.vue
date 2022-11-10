@@ -30,8 +30,8 @@
       <p class="events">Your upcoming events:</p>
       <ul class="eventlist">
         <li>CCA outing</li>
-        <li>Secondary school gathering</li>
-        <li>Family reunion</li>
+        <li>Secondary school reunion</li>
+        <li>Family gathering</li>
       </ul><br><br>
 
       <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Events</router-link> to view more details.</p>

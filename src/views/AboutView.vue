@@ -11,7 +11,8 @@
 
   <AboutCard></AboutCard>
 
-  <button class="btn btn-warning" data-aos="fade-up">Start Partying!</button>
+  <router-link :to="{ name: 'signin'}"><button class="btn btn-warning" data-aos="fade-up">Start Partying!</button></router-link>
+  
 
 
 </template>

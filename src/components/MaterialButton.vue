@@ -1,4 +1,5 @@
 <script setup>
+/* eslint-disable */
 defineProps({
   variant: {
     type: String,
