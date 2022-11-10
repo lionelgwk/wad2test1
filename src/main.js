@@ -5,6 +5,7 @@ import store from './store'
 import AOS from 'aos'
 import VueGeolocation from "vue3-geolocation";
 import GMaps from "vuejs3-google-maps";
+import SuiVue from 'semantic-ui-vue';
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
@@ -39,4 +40,4 @@ app.use(GMaps, {
         libraries: ['places']
     }
 });
-app.use(store).use(router).use(AOS.init()).mount('#app')
+app.use(store).use(router).use(AOS.init()).use(SuiVue).mount('#app')
