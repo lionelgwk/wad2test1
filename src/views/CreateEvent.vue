@@ -1,4 +1,16 @@
 <template>
+  <div id="filler"></div>
+  <NearbyPlaces></NearbyPlaces>
+</template>
+
+
+
+
+
+
+
+
+<!-- <template>
   <div class="container">
     <div class="pt-5"></div>
     <h3 class="pt-5 font-size-xl mb-3">Choose your location</h3>
@@ -17,7 +29,7 @@
             v-bind:gps_timeout="7000"
             v-bind:fallbackProcedure="fallbackProcedure"
             v-bind:zoom="zoom"
-            v-bind:geolocation="geolocation"
+             v-bind:geolocation="geolocation"
             v-bind:address="address"
             v-bind:manually="manually"
             @changed="getMapData"
@@ -118,5 +130,23 @@ export default {
   width: 100%;
   height: 450px;
   float: left;
+}
+</style> -->
+
+<script>
+
+import NearbyPlaces from '../components/NearbyPlaces.vue'
+
+export default {
+  name: 'CreateEvent',
+  components: {
+    NearbyPlaces
+  }
+}
+</script>
+
+<style>
+#filler {
+  height: 100px;
 }
 </style>
