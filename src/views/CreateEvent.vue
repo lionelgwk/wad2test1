@@ -1,6 +1,9 @@
 <template>
   <div id="filler"></div>
   <NearbyPlaces></NearbyPlaces>
+  <transition name="toast">
+    <ToastBubble v-if="showToast" />
+  </transition>
 </template>
 
 
@@ -135,12 +138,25 @@ export default {
 
 <script>
 
+import { ref } from 'vue';
 import NearbyPlaces from '../components/NearbyPlaces.vue'
+import ToastBubble from '../components/ToastBubble.vue';
 
 export default {
   name: 'CreateEvent',
   components: {
-    NearbyPlaces
+    NearbyPlaces,
+    ToastBubble
+  },
+  setup(){
+    const showToast = ref(true);
+
+    // const removeToast = () => {
+    //   showToast.value = false;
+
+    // }
+
+    return { showToast }
   }
 }
 </script>
@@ -148,5 +164,19 @@ export default {
 <style>
 #filler {
   height: 100px;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.toast-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-enter-active {
+  transition: all 0.3s ease;
 }
 </style>
