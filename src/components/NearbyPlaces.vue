@@ -1,5 +1,12 @@
 <template>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    
+    <div class="toast-wrap" v-if="showToast">
+        <div class="toastnotif">
+            loading...
+        </div>
+    </div>
+
     <div class="ui grid">
         <div class="six wide column">
             <form class="ui segment large form">
@@ -55,17 +62,27 @@
 
 <script> 
 import axios from 'axios';
+import { ref } from 'vue';
 // import { onMounted } from 'vue';
 
 /* eslint-disable */
 export default {
+    setup(){
+        const showToast = ref(true);
+        const hideToast = () => {
+            showToast.value = false;
+        };
+
+        return { showToast, hideToast }
+    },
     data() {
         return {
             type: "restaurant",
             radius: "1",
             lat: 0,
             lng: 0,
-            places: []
+            places: [],
+            mapDisplay: false,
         }
     },
     computed:{
@@ -104,6 +121,8 @@ export default {
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
+            this.mapDisplay = true;
+
             var infowindow = new google.maps.InfoWindow();
 
             this.places.forEach(place => {
@@ -125,6 +144,7 @@ export default {
                     infowindow.open(map, marker);
                 });
             })
+            
         }
     },
     mounted(){
@@ -133,7 +153,29 @@ export default {
     watch: {
         coordinates(){
             this.findNearby();
+        },
+        mapDisplay(){
+            this.hideToast();
         }
     }
 }
 </script>
+
+<style>
+  .toast-wrap {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+    z-index: 99999999;
+  }
+  .toastnotif {
+    padding: 20px;
+    color: white;
+    background: #ff0062;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    z-index: 999999999;
+  }
+</style>

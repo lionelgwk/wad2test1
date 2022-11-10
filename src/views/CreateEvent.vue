@@ -1,9 +1,13 @@
 <template>
   <div id="filler"></div>
+  <div class="toast-wrapper">
+    <div class="toast">
+      loading...
+    </div>
+  </div>
   <NearbyPlaces></NearbyPlaces>
-  <transition name="toast">
-    <ToastBubble v-if="showToast" />
-  </transition>
+  
+  
 </template>
 
 
@@ -138,26 +142,20 @@ export default {
 
 <script>
 
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import NearbyPlaces from '../components/NearbyPlaces.vue'
-import ToastBubble from '../components/ToastBubble.vue';
+// import ToastBubble from '../components/ToastBubble.vue';
 
 export default {
   name: 'CreateEvent',
   components: {
-    NearbyPlaces,
-    ToastBubble
+    NearbyPlaces
   },
-  setup(){
-    const showToast = ref(true);
+  // setup(){
+  //   const showToast = ref(true);
 
-    // const removeToast = () => {
-    //   showToast.value = false;
-
-    // }
-
-    return { showToast }
-  }
+  //   return { showToast }
+  // }
 }
 </script>
 
@@ -166,7 +164,23 @@ export default {
   height: 100px;
 }
 
-.toast-enter-from {
+.toast-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+  }
+.toast {
+  padding: 20px;
+  color: white;
+  background: #ff0062;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+/* .toast-enter-from {
   opacity: 0;
   transform: translateY(-60px);
 }
@@ -178,5 +192,5 @@ export default {
 
 .toast-enter-active {
   transition: all 0.3s ease;
-}
+} */
 </style>

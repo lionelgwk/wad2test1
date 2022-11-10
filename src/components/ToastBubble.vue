@@ -6,6 +6,9 @@
   </div>
 </template>
 
+<script>
+</script>
+
 <style>
   .toast-wrapper {
     position: fixed;

@@ -2,9 +2,7 @@
   <div class="about">
     <div class="carousel-bg">
       <AboutCarousel></AboutCarousel>
-    </div>
-
-    
+    </div>    
   </div>
 
   <hr>
