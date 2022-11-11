@@ -1,6 +1,12 @@
 <template>
   <div id="filler"></div>
+  <h2>Select your party activites:</h2>
   <NearbyPlaces></NearbyPlaces>
+
+  <div id="filler"></div>
+  <h2>Select your party date:</h2>
+  <input type="date">
+
 </template>
 
 
@@ -147,6 +153,6 @@ export default {
 
 <style>
 #filler {
-  height: 100px;
+  height: 50px;
 }
 </style>
