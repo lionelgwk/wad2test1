@@ -1,4 +1,23 @@
 <template>
+  <div id="filler"></div>
+  <div class="toast-wrapper">
+    <div class="toast">
+      loading...
+    </div>
+  </div>
+  <NearbyPlaces></NearbyPlaces>
+  
+  
+</template>
+
+
+
+
+
+
+
+
+<!-- <template>
   <div class="container">
     <div class="pt-5"></div>
     <h3 class="pt-5 font-size-xl mb-3">Choose your location</h3>
@@ -17,7 +36,7 @@
             v-bind:gps_timeout="7000"
             v-bind:fallbackProcedure="fallbackProcedure"
             v-bind:zoom="zoom"
-            v-bind:geolocation="geolocation"
+             v-bind:geolocation="geolocation"
             v-bind:address="address"
             v-bind:manually="manually"
             @changed="getMapData"
@@ -119,4 +138,59 @@ export default {
   height: 450px;
   float: left;
 }
+</style> -->
+
+<script>
+
+// import { ref } from 'vue';
+import NearbyPlaces from '../components/NearbyPlaces.vue'
+// import ToastBubble from '../components/ToastBubble.vue';
+
+export default {
+  name: 'CreateEvent',
+  components: {
+    NearbyPlaces
+  },
+  // setup(){
+  //   const showToast = ref(true);
+
+  //   return { showToast }
+  // }
+}
+</script>
+
+<style>
+#filler {
+  height: 100px;
+}
+
+.toast-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+  }
+.toast {
+  padding: 20px;
+  color: white;
+  background: #ff0062;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+/* .toast-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.toast-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-enter-active {
+  transition: all 0.3s ease;
+} */
 </style>

@@ -2,17 +2,17 @@
   <div class="about">
     <div class="carousel-bg">
       <AboutCarousel></AboutCarousel>
-    </div>
-
-    
+    </div>    
   </div>
 
   <hr>
 
   <AboutCard></AboutCard>
 
+
   <!-- <button class="btn btn-warning" data-aos="fade-up">Start Partying!</button> -->
   <router-link :to="{ name: 'registeraccount'}" class="btn btn-warning" data-aos="fade-up">Start Partying!</router-link>
+
 
 
 </template>

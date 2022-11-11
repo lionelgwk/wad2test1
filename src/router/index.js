@@ -51,6 +51,7 @@ const routes = [
     name: 'signin',
     component: SignIn
   }
+  
 
 ]
 
