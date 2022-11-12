@@ -3,7 +3,7 @@
     <div class="page-header min-vh-100" loading="lazy">
       <div class="container" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <div class="center">
-            <h1>Login</h1><br>
+            <h2>Login</h2><br>
             <p><input type="text" placeholder="Email" v-model="email"/></p>
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p v-if="errMsg">{{ errMsg }}</p>
@@ -86,7 +86,7 @@ input {
 
 }
 
-h1 {
+h2 {
   color: black;
   font-weight: bold;
   font-family: 'Varela Round', sans-serif;
