@@ -101,10 +101,11 @@ input {
     height: 60vh;
     width: 100%;
     font-family: 'Varela Round', sans-serif;
+    position:fixed;
   }
 
 .container {
-    top: 50%;
+    top: 40%;
     position: relative;
 }
 
