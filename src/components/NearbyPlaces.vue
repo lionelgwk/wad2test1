@@ -1,19 +1,22 @@
 <template>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
     
-    <div class="toast-wrap" v-if="showToast">
-        <div class="toastnotif">
-            loading...
+    <transition name="toastmotion">
+        <div class="toast-wrap" v-if="showToast">
+            <div class="toastnotif">
+                loading...
+            </div>
         </div>
-    </div>
+    </transition>
 
     <div class="ui grid">
         <div class="six wide column">
             <form class="ui segment large form">
                 <div class="field">
                     <div class="ui right icon input large">
-                        <input type="text" placeholder="Search for a place" v-model="coordinates">
-                        <i class="search link icon" @click="findLocations"></i>
+                        <input type="text" id="coords" ref="latLngRef" placeholder="Search for a place" v-model="coords" @change="findNearby">
+                        <input type="text" ref="addRef" @change="$emit('update:add', $event.target.value)" :value="add" placeholder="Enter a place">
+                        <i class="search link icon" @click="findNearby"></i>
                     </div>
                 </div>
 
@@ -63,17 +66,44 @@
 <script> 
 import axios from 'axios';
 import { ref } from 'vue';
-// import { onMounted } from 'vue';
+// import PlaceAutocomplete from './PlaceAutocomplete.vue';
+import { onMounted } from 'vue';
+
+
 
 /* eslint-disable */
 export default {
-    setup(){
+    setup() {
+
         const showToast = ref(true);
         const hideToast = () => {
             showToast.value = false;
         };
 
-        return { showToast, hideToast }
+
+        const addRef = ref();
+        
+
+        onMounted(() => {
+            const autoComplete = new google.maps.places.Autocomplete(addRef.value, {
+                types: ['address'],
+                fields: ['address_components', 'geometry']
+            });
+
+            autoComplete.addListener('place_changed', () => {
+                const place = autoComplete.getPlace();
+                const lat = place.geometry.location.lat();
+                const lng = place.geometry.location.lng();
+                document.getElementById('coords').value = `${lat}, ${lng}`;
+            });
+
+            
+
+
+        })
+
+        
+        return { showToast, hideToast, addRef };
     },
     data() {
         return {
@@ -83,99 +113,125 @@ export default {
             lng: 0,
             places: [],
             mapDisplay: false,
-        }
+            search: "",
+            add: "",
+            coords: ""
+        };
     },
-    computed:{
-        coordinates(){
+    computed: {
+        coordinates() {
             return `${this.lat}, ${this.lng}`;
         }
     },
     methods: {
         findLocations() {
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    this.lat = position.coords.latitude;
-                    this.lng = position.coords.longitude;
-                },
-                error => {
-                    console.log("Error getting location");
-                }
-            );
+            navigator.geolocation.getCurrentPosition(position => {
+                this.lat = position.coords.latitude;
+                this.lng = position.coords.longitude;
+            }, error => {
+                console.log("Error getting location");
+            });
         },
-        findNearby(){
+        findNearby() {
             const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.lat},${this.lng}&type=${this.type}&radius=${this.radius * 1000}&key=AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4`;
-            console.log(URL);
+            this.showToast = true;
             axios.get(URL)
                 .then(response => {
-                    this.places = response.data.results;
-                    this.addLocationsToGoogleMaps();
-                })
-                .catch( error => {
-                    console.log(error.message);
-                });
+                this.places = response.data.results;
+                this.addLocationsToGoogleMaps();
+            })
+                .catch(error => {
+                console.log(error.message);
+            });
         },
-        addLocationsToGoogleMaps(){
-            var map = new google.maps.Map(this.$refs["map"],{
+        addLocationsToGoogleMaps() {
+            var map = new google.maps.Map(this.$refs["map"], {
                 zoom: 17,
                 center: new google.maps.LatLng(this.lat, this.lng),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-
             this.mapDisplay = true;
-
+            
+            
             var infowindow = new google.maps.InfoWindow();
-
             this.places.forEach(place => {
                 const lat = place.geometry.location.lat;
                 const lng = place.geometry.location.lng;
-
                 let marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(lat,lng),
+                    position: new google.maps.LatLng(lat, lng),
                     map: map
                 });
-
                 google.maps.event.addListener(marker, "click", () => {
-
-                    infowindow.setContent(
-                        `<div class="ui header">${place.name}</div>
-                        <p>${place.vicinity}</p>`
-                    );
-
+                    infowindow.setContent(`<div class="ui header">${place.name}</div>
+                        <p>${place.vicinity}</p>`);
                     infowindow.open(map, marker);
                 });
-            })
+            });
+
             
         }
     },
-    mounted(){
+    mounted() {
         this.findLocations();
     },
-    watch: {
-        coordinates(){
+    watch:{
+        coords(){
+            this.lat = this.coords.split(",")[0];
+            this.lng = this.coords.split(",")[1];
+        },
+        coordinates() {
             this.findNearby();
         },
-        mapDisplay(){
+        mapDisplay() {
             this.hideToast();
-        }
-    }
+            this.mapDisplay = false;
+        } 
+    },
 }
 </script>
 
-<style>
+<style scoped>
   .toast-wrap {
-    position: fixed;
-    width: 100%;
-    top: 20px;
-    z-index: 99999999;
-  }
-  .toastnotif {
-    padding: 20px;
-    color: white;
-    background: #ff0062;
-    border-radius: 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
-    max-width: 400px;
-    margin: 0 auto;
-    z-index: 999999999;
-  }
+        position: fixed;
+        width: 100%;
+        top: 20px;
+        z-index: 99999999;
+    }
+    .toastnotif {
+        padding: 20px;
+        color: white;
+        background: #ff0062;
+        border-radius: 10px;
+        box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+        max-width: 400px;
+        margin: 0 auto;
+        z-index: 99999999;
+    }
+    .toastmotion-enter-from {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+
+    .toastmotion-enter-to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .toastmotion-enter-active {
+        transition: all 0.3s ease;
+    }
+
+    .toastmotion-leave-from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .toastmotion-leave-to {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+
+    .toastmotion-leave-active {
+        transition: all 0.3s ease;
+    }
 </style>

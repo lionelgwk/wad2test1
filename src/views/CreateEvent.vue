@@ -191,7 +191,7 @@ export default {
   },
     
   components: {
-    NearbyPlaces
+    NearbyPlaces,
   },
 
 

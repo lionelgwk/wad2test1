@@ -39,7 +39,10 @@ const routes = [
   {
     path: '/createevent',
     name: 'createevent',
-    component: CreateEvent
+    component: CreateEvent,
+    meta: {
+      requiresAuth: true,
+    }
   },
   {
     path: '/registeraccount',
@@ -59,6 +62,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
 export default router
 
 const getCurrentUser = () => {
@@ -80,7 +84,6 @@ router.beforeEach(async(to, from, next) => {
       next();
     }
     else{
-      alert("No access!");
       next("/");
     }
   }

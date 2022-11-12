@@ -1,15 +1,20 @@
 <template>
   <nav class="navbar navbar-expand-md bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img width="30" height="24" src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png"> PartyGoers</a>
+      <a v-if="!isLoggedIn" class="navbar-brand" href="../">
+        <img width="30" height="24" src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png"> PartyGoers
+      </a>
+      <a v-if="isLoggedIn" class="navbar-brand" href="../#/homelogin">
+        <img width="30" height="24" src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png"> PartyGoers
+      </a>
 
         
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-lg-0">
+        <!-- left side -->
+        <ul class="navbar-nav me-auto">
           <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link active text-nowrap" aria-current="page">
               <router-link :to="{ name: 'home'}">Home</router-link>
@@ -31,27 +36,33 @@
             </a>
           </li>
         </ul>
-        <ul class="navbar-nav my-auto mb-lg-0">
+        <!-- right side -->
+        <ul class="navbar-nav ms-auto mb-0">
+
           <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap ">
               <router-link :to="{ name: 'createevent'}">Create A Party</router-link>
             </a>
           </li>
+
           <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap ">
               <button class="btn btn-dark" @click="handleSignOut">Sign Out</button>
             </a>
           </li>
+
           <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap">
               <router-link :to="{ name: 'registeraccount'}">Register</router-link>
             </a>
           </li>
+
           <li v-if="!isLoggedIn" class="nav-item">
             <a class="nav-link text-nowrap ">
               <router-link :to="{ name: 'signin'}">Sign In</router-link>
             </a>
           </li>
+
         </ul>
       </div>
     </div>
@@ -84,7 +95,7 @@ function handleSignOut() {
     signOut(auth)
         .then(() => {
             console.log("Successfully signed out!");
-            router.push("/");
+            router.push("/homelogin");
         })
         .catch((error) => {
             console.log(error.code);
@@ -94,7 +105,7 @@ function handleSignOut() {
 </script>
 
 
-<style>
+<style scoped>
 nav {
   position: fixed;
   top: 0;

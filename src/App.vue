@@ -1,5 +1,6 @@
 <template>
   <body>
+    <div class="filler"></div>
     <nav>
       <NavBar></NavBar>
     </nav>
@@ -13,8 +14,12 @@
 </template>
 
 
+
+
 <script>
   /* eslint-disable no-undef */
+
+  
 
   import NavBar from './components/NavBar.vue'
   import PageFooter from './components/PageFooter.vue'
@@ -49,6 +54,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.filler {
+  height: 80px;
 }
 
 </style>
