@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-/* eslint-disable */
-import { getFirestore } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
+// /* eslint-disable */
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,14 +20,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 
-const db = getFirestore();
-db.settings({
-    timestampsInSnapshots: true
-})
+const db = firebase.firestore();
 
-const db = getFirestore();
+db.settings({timestampsInSnapshots: true, merge: true});
+
 export default db ;
 
