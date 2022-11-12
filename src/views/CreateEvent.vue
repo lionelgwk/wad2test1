@@ -1,17 +1,49 @@
 <template>
-  <br><br>
+
+  <div id="largefiller"></div>
+  
+  <input type="text" placeholder="Enter Your Party Name" class="text-align-center">
   <div id="filler"></div>
-  <h2>Enter your party name:</h2>
-  <input type="text" placeholder="Party Name">
 
 
+
+  <div id="filler"></div>
+  <div class="row">
+    <div class="col">
+      <h2>Select your friends:</h2>
+    </div>
+    <div class="col">
+      <h2>Name of Party Host:</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <select class="select" aria-label="Default select example" v-model="select">
+        <option v-for="friend in friends" :key="friend" selected>{{friend}}</option>
+      </select>
+      <button class="button" v-on:click="addFriend()">Add friend</button>
+    </div>
+      
+    <div class="col">
+      <div id="filler"></div>
+      
+      user
+    </div>
+  </div>
+  
   <div id="filler"></div>
   <h2>Select your party activites:</h2>
   <NearbyPlaces></NearbyPlaces>
 
   <div id="filler"></div>
   <h2>Select your party date:</h2>
-  <input type="date" id="dateSelected">
+  <input type="date">
+
+  <div id="filler"></div>
+  <button class="button">Create Party</button>
+
+
 
 </template>
 
@@ -140,17 +172,44 @@ export default {
 
 <script>
 
-import NearbyPlaces from '../components/NearbyPlaces.vue'
+
+import { FirebaseError } from '@firebase/util';
+import NearbyPlaces from '../components/NearbyPlaces.vue';
+
 
 export default {
   name: 'CreateEvent',
+  data() {
+    return  {
+      friends: ['friend1', 'friend2'],
+      select: '', 
+      selected: []
+    }
+  },
+    
   components: {
     NearbyPlaces
+  },
+
+  methods: {
+    addFriend() {
+      if (this.selected.includes(this.select)) {
+        this.selected = this.selected;
+      } else {
+        this.selected.push(this.select);
+      }
+    }
   }
 }
+
 </script>
 
 <style>
+
+#largefiller {
+  height: 100px;
+}
+
 #filler {
   height: 20px;
 }
@@ -161,10 +220,37 @@ input[type="date"] {
   font-family: 'Varela Round', sans-serif;
 }
 
+
 input[type="text"] {
-  border-radius: 10px;
-  padding:10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
   font-family: 'Varela Round', sans-serif;
+  font-size:40px;
+  text-align: center;
+}
+
+
+.button {
+  background-color: crimson;
+  font-family: 'Varela Round', sans-serif;
+  color:white;
+  border-radius:10px;
+  margin-left:10px
+}
+
+select {
+  width: 150px;
+  font-family: 'Varela Round', sans-serif;
+  height: 40px;
+  border-radius: 10px;
+  padding:5px;
+  margin-right:10px;
+}
+
+.row {
+  margin-bottom:10px
 }
 
 </style>
