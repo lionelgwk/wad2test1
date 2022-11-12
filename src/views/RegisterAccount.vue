@@ -3,8 +3,8 @@
         <h1>Create an Account</h1>
         <p><input type="text" placeholder="Email" v-model="email"/></p>
         <p><input type="password" placeholder="Password" v-model="password"/></p>
-        <p><button @click="register">Submit</button></p>
-        <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+        <p><button @click="register" class="button">Submit</button></p>
+        <p><button @click="signInWithGoogle" class="button google">Sign In With Google</button></p>
     </div>
   </template>
   
@@ -56,9 +56,18 @@ h1 {
   font-weight: bold;
 }
 
-.party {
-  margin-top: 60px;
-  color: crimson;
-  font-weight: bold;
+input {
+    border-radius: 10px;
+    width:300px;
+    height:40px
+}
+.button {
+    background-color: crimson;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.google {
+    background-color: rgb(194, 194, 194);
 }
 </style>

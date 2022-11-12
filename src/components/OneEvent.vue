@@ -4,7 +4,7 @@
       <br><br><br>
       <div data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <h1>My Parties</h1>
-      <p>View all your upcoming events here!</p>
+      <p>View all your upcoming parties here!</p>
       </div>
       
       <div class="row" data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine">
