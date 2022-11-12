@@ -14,8 +14,7 @@
             <form class="ui segment large form">
                 <div class="field">
                     <div class="ui right icon input large">
-                        <input type="text" id="coords" ref="latLngRef" placeholder="Search for a place" v-model="coords" @change="findNearby">
-                        <input type="text" ref="addRef" @change="$emit('update:add', $event.target.value)" :value="add" placeholder="Enter a place">
+                        <input type="text" placeholder="Enter a place" ref="add"/>
                         <i class="search link icon" @click="findNearby"></i>
                     </div>
                 </div>
@@ -65,45 +64,33 @@
 
 <script> 
 import axios from 'axios';
-import { ref } from 'vue';
+
 // import PlaceAutocomplete from './PlaceAutocomplete.vue';
-import { onMounted } from 'vue';
+
 
 
 
 /* eslint-disable */
 export default {
-    setup() {
+    mounted() {
+        this.findLocations();
 
-        const showToast = ref(true);
-        const hideToast = () => {
-            showToast.value = false;
-        };
+        const autocomplete = new google.maps.places.Autocomplete(this.$refs["add"],
+        {
+            bounds: new google.maps.LatLngBounds(
+                new google.maps.LatLng(1.3521, 103.8198)
+            ),
+        });
 
-
-        const addRef = ref();
         
-
-        onMounted(() => {
-            const autoComplete = new google.maps.places.Autocomplete(addRef.value, {
-                types: ['address'],
-                fields: ['address_components', 'geometry']
-            });
-
-            autoComplete.addListener('place_changed', () => {
-                const place = autoComplete.getPlace();
-                const lat = place.geometry.location.lat();
-                const lng = place.geometry.location.lng();
-                document.getElementById('coords').value = `${lat}, ${lng}`;
-            });
-
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            const lat = place.geometry.location.lat();
+            const lng = place.geometry.location.lng();
+            this.lat = lat;
+            this.lng = lng;
             
-
-
-        })
-
-        
-        return { showToast, hideToast, addRef };
+        });
     },
     data() {
         return {
@@ -114,8 +101,7 @@ export default {
             places: [],
             mapDisplay: false,
             search: "",
-            add: "",
-            coords: ""
+            showToast: true,
         };
     },
     computed: {
@@ -139,6 +125,7 @@ export default {
                 .then(response => {
                 this.places = response.data.results;
                 this.addLocationsToGoogleMaps();
+                
             })
                 .catch(error => {
                 console.log(error.message);
@@ -150,6 +137,7 @@ export default {
                 center: new google.maps.LatLng(this.lat, this.lng),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
             this.mapDisplay = true;
             
             
@@ -171,19 +159,18 @@ export default {
             
         }
     },
-    mounted() {
-        this.findLocations();
-    },
     watch:{
-        coords(){
-            this.lat = this.coords.split(",")[0];
-            this.lng = this.coords.split(",")[1];
-        },
         coordinates() {
             this.findNearby();
         },
+        lat() {
+            this.findNearby();
+        },
+        lng() {
+            this.findNearby();
+        },
         mapDisplay() {
-            this.hideToast();
+            this.showToast = false;
             this.mapDisplay = false;
         } 
     },
