@@ -38,6 +38,7 @@ const options = {
 
 };
 
+
 let app = createApp(App);
 app.use(VueGeolocation); 
 app.use(GMaps, {
