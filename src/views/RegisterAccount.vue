@@ -134,7 +134,7 @@ input {
     outline:none;
     border-radius: 20px;
     height: 40px;
-    width: 300px;
+    
     font-size:14px;
     font-family: 'Varela Round', sans-serif;
     justify-content: left;
@@ -187,8 +187,7 @@ input {
 }
 
 .side img{
-    width:350px;
-    height:350px;
+    width:100%;
         
 }
 </style>

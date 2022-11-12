@@ -1,4 +1,4 @@
-<template>
+<template >
     <!--<div class="registeraccount">
 
         <h1>Sign In</h1>
@@ -149,7 +149,7 @@ h1 {
     outline:none;
     border-radius: 20px;
     height: 40px;
-    width: 300px;
+    
     font-size:14px;
     font-family: 'Varela Round', sans-serif;
     justify-content: left;
@@ -202,8 +202,7 @@ h1 {
 }
 
 .side img{
-    width:500px;
-    height:300px;
+    width:100%;
         
 }
 
