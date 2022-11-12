@@ -36,7 +36,7 @@
         <li>Family gathering</li>
       </ul><br><br>
 
-      <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Events</router-link> to view more details.</p>
+      <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Parties</router-link> to view more details.</p>
   </div>
     </div>
   </header>

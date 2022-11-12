@@ -1,20 +1,19 @@
 <template>
+  <br><br>
+  <div id="filler"></div>
+  <h2>Enter your party name:</h2>
+  <input type="text" placeholder="Party Name">
+
+
   <div id="filler"></div>
   <h2>Select your party activites:</h2>
   <NearbyPlaces></NearbyPlaces>
 
   <div id="filler"></div>
   <h2>Select your party date:</h2>
-  <input type="date">
+  <input type="date" id="dateSelected">
 
 </template>
-
-
-
-
-
-
-
 
 <!-- <template>
   <div class="container">
@@ -153,6 +152,19 @@ export default {
 
 <style>
 #filler {
-  height: 50px;
+  height: 20px;
 }
+
+input[type="date"] {
+  border-radius: 10px;
+  padding:10px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+input[type="text"] {
+  border-radius: 10px;
+  padding:10px;
+  font-family: 'Varela Round', sans-serif;
+}
+
 </style>
