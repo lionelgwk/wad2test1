@@ -4,8 +4,8 @@
         <p><input type="text" placeholder="Email" v-model="email"/></p>
         <p><input type="password" placeholder="Password" v-model="password"/></p>
         <p v-if="errMsg">{{ errMsg }}</p>
-        <p><button @click="signIn">Submit</button></p>
-        <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+        <p><button @click="signIn" class="button">Submit</button></p>
+        <p><button @click="signInWithGoogle" class="button google">Sign In With Google</button></p>
     </div>
   </template>
   
@@ -65,6 +65,12 @@
   </script>
 
 <style scoped>
+input {
+    border-radius: 10px;
+    width:300px;
+    height:40px
+}
+
 h1 {
   margin-top: 60px;
   color: black;
@@ -72,9 +78,13 @@ h1 {
   font-family: 'Varela Round', sans-serif;
 }
 
-.party {
-  margin-top: 60px;
-  color: crimson;
-  font-weight: bold;
+.button {
+    background-color: crimson;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.google {
+    background-color: rgb(194, 194, 194);
 }
 </style>
