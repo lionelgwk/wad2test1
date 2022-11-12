@@ -83,7 +83,6 @@ input {
     text-align: center;
     font-family: 'Varela Round', sans-serif;
     background-color: rgb(210, 210, 210);
-
 }
 
 h2 {
