@@ -7,6 +7,7 @@ import CreateEvent from '../views/CreateEvent.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
 import SignIn from '../views/SignIn.vue'
 import HomeLogin from '../views/HomeLogin.vue'
+import CreateSuccess from '../views/CreateSuccess.vue'
 
 
 const routes = [
@@ -53,6 +54,11 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: SignIn
+  },
+  {
+    path: '/createsuccess',
+    name: 'createsuccess',
+    component: CreateSuccess
   }
   
 
