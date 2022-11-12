@@ -2,25 +2,25 @@
   //Vue Material Kit 2 components
   // import MaterialButton from "@/components/MaterialButton.vue";
   // import Event from '@/components/OneEvent.vue';
-  import AddPopup from '@/components/AddPopup.vue';
+  
   // import DashboardEvents from '@/components/DashboardEvents.vue';
   </script>
 
   <template>
-    <AddPopup></AddPopup>
+    
 
-    <!-- <DashboardEvents></DashboardEvents> -->
+    <DashboardEvents></DashboardEvents>
 
   </template>
   
 
 <script>
+import DashboardEvents from '@/components/DashboardEvents.vue';
 export default {
     name: 'MyEvents',
     components: {
     // Event
-    // DashboardEvents,
-    AddPopup
+    DashboardEvents,
 }
   }
   </script>

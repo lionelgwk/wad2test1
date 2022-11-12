@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="col">
-      <select class="select" aria-label="Default select example" v-model="select">
+      <select class="select" aria-label="Default select example" v-model="selectFriend">
         <option v-for="friend in friends" :key="friend" selected>{{friend}}</option>
       </select>
       <button class="button" v-on:click="addFriend()">Add friend</button>
@@ -28,7 +28,6 @@
       
     <div class="col">
       <div id="filler"></div>
-      
       user
     </div>
   </div>
@@ -39,155 +38,39 @@
 
   <div id="filler"></div>
   <h2>Select your party date:</h2>
-  <input type="date">
+  <input type="date" v-model="date">
 
   <div id="filler"></div>
-  <button class="button">Create Party</button>
+  <button class="button" @click="submit">Create Party</button>
 
 
 
 </template>
 
-<!-- <template>
-  <div class="container">
-    <div class="pt-5"></div>
-    <h3 class="pt-5 font-size-xl mb-3">Choose your location</h3>
-
-    <button class="btn btn-danger mb-4" @click="triggerReady">
-      Load Map
-    </button>
-
-    <div class="row">
-      <div class="col-md-8">
-        <div class="map_holder">
-          <place-search
-            v-bind:ready="ready"
-            placeholder="Enter a location"
-            loading="Map is loading"
-            v-bind:gps_timeout="7000"
-            v-bind:fallbackProcedure="fallbackProcedure"
-            v-bind:zoom="zoom"
-             v-bind:geolocation="geolocation"
-            v-bind:address="address"
-            v-bind:manually="manually"
-            @changed="getMapData"
-          >
-          </place-search>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <h5 class="text-uppercase color-secondary mb-1">Country</h5>
-        <div class="mb-3 font-weight-bold">
-          {{
-            place.country != null
-              ? place.country 
-              : "Please search for an address before proceeding"
-          }}
-        </div>
-
-        <h5 class="text-uppercase color-secondary mb-1">Zip code</h5>
-        <div class="mb-3">
-          <input type="text" v-model="place.zip_code" class="form-control" />
-        </div>
-
-        <h5 class="text-uppercase color-secondary mb-1">
-          Address
-        </h5>
-        <div class="mb-3">
-          <input type="text" v-model="place.address_description" class="form-control" />
-        </div>
-        <h5 class="text-uppercase color-secondary mb-1">
-          Suggested activities
-        </h5>
-        <div class="mb-3">
-          <textarea
-            class="form-control"
-            cols="30"
-            rows="5"
-            v-model="place.suggested_activities"
-          ></textarea>
-        </div>
-        <div class="mt-3">
-          <button class="btn btn-danger w-100">Select location</button>
-        </div>
-      </div>
-    </div>
-    <h3 class="pt-5 font-size-xl mb-3">Select your friends</h3>
-
-  </div>
-</template>
-
 
 <script>
-export default {
-  name: "App",
-  data() {
-    return {
-      ready: false, //Add ready:false to stop map from loading, and then when changed to true map will auto load
-      fallbackProcedure: "gps", //gps | geolocation | address | manually
-      zoom: 17, //Default Zoom
-      geolocation: {
-        // If GPS and Find by address fails then, map will be positioned by a default geolocation
-        lat: 31.73858,
-        lng: -35.98628,
-        zoom: 2,
-      },
-      address: {
-        query: "Singapore Management University", //If GPS fails, Find by address is triggered
-        zoom: 10,
-      },
-      manually: {
-        address_description: "Singapore Management University (SMU)",
-        country: "Singapore",
-        lat: 1.296568,
-        lng: 103.852119,
-        zip_code: "S178903",
-        zoom: 17,
-        suggested_activities: ''
-      },
-      place: {},
-      form_data: {},
-    };
-  },
-  methods: {
-    getMapData(place) {
-      this.place = place;
-      console.log(place);
-    },
-    triggerReady() {
-      this.fallbackProcedure = "manually";
-      this.ready = true;
-    },
-  },
-  created() {},
-};
-</script>
 
-<style lang="css" scoped>
-.map_holder {
-  width: 100%;
-  height: 450px;
-  float: left;
-}
-</style> -->
-
-<script>
-/* eslint-disable */
-
-
-
-import { FirebaseError } from '@firebase/util';
+import db from "@/fb";
 import NearbyPlaces from '../components/NearbyPlaces.vue';
-
-
+import { getAuth } from "firebase/auth";
 
 export default {
+  created(){
+
+  },
   name: 'CreateEvent',
   data() {
     return  {
-      friends: ['friend1', 'friend2'],
-      select: '', 
-      selected: []
+      title: '',
+      activities: [],
+      date: null,
+      partyLeader: '',
+      partyLeaderName: '',
+      address: [],
+      friends: [],
+      eventStatus: '',
+      selectFriend: '', 
+      selectedFriends: [],
     }
   },
     
@@ -197,15 +80,48 @@ export default {
 
 
   methods: {
+    updateLocation(location) {
+      this.location = location;
+      console.log(this.location);
+    },
     addFriend() {
-      if (this.selected.includes(this.select)) {
-        this.selected = this.selected;
+      if (this.selectedFriends.includes(this.selectFriend)) {
+        return
       } else {
-        this.selected.push(this.select);
+        this.selectedFriends.push(this.selectFriend);
+      }
+      console.log(this.selectedFriends);
+    },
+    submit(){
+      const auth = getAuth();
+      const user = auth.currentUser;
+      console.log(user.email);
+      const party = {
+        title: this.title,
+        activities: this.activities,
+        date: this.date,
+        partyLeader: user.email,
+        partyLeaderName: user.email.split('@')[0],
+        address: this.address,
+        friends: this.friends,
+        eventStatus: 'ongoing'
+      }
+
+      db.collection('parties').add(party)
+        .then(() => {
+            console.log('added to db')
+        })
+      
+      console.log(this.title);
+      console.log(this.activities);
+      console.log(this.date);
+      console.log(this.partyLeader);
+      console.log(this.address);
+      console.log(this.friends);
+      console.log(this.eventStatus);
       }
     }
   }
-}
 
 </script>
 
