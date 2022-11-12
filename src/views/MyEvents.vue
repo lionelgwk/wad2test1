@@ -63,6 +63,9 @@ export default {
 <style>
 .modal-content {
   font-family: 'Varela Round', sans-serif;
+}
 
+html{
+  overflow-y: scroll;
 }
 </style>
