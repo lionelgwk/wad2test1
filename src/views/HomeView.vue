@@ -72,22 +72,6 @@ export default {
     font-family: 'Varela Round', sans-serif;
   }
 
-  .events {
-    font-size: 40px;
-    text-align: left;
-    padding-left:130px;
-    font-weight: bold;
-    font-family: 'Varela Round', sans-serif;
-    color: crimson;
-  }
-
-  .eventlist {
-    font-size: 20px;
-    text-align: left;
-    padding-left:160px;
-    font-family: 'Varela Round', sans-serif;
-  }
-
   .page-header{
     background-image: url('@/assets/partygoers.jpg');
     background-size: cover;
