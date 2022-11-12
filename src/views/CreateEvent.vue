@@ -1,10 +1,4 @@
 <template>
-  <div id="filler"></div>
-  <div class="toast-wrapper">
-    <div class="toast">
-      loading...
-    </div>
-  </div>
   <NearbyPlaces></NearbyPlaces>
   
   
@@ -149,7 +143,7 @@ import NearbyPlaces from '../components/NearbyPlaces.vue'
 export default {
   name: 'CreateEvent',
   components: {
-    NearbyPlaces
+    NearbyPlaces,
   },
   // setup(){
   //   const showToast = ref(true);
@@ -159,38 +153,6 @@ export default {
 }
 </script>
 
-<style>
-#filler {
-  height: 100px;
-}
+<style scoped>
 
-.toast-wrapper {
-    position: fixed;
-    width: 100%;
-    top: 20px;
-  }
-.toast {
-  padding: 20px;
-  color: white;
-  background: #ff0062;
-  border-radius: 10px;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-
-/* .toast-enter-from {
-  opacity: 0;
-  transform: translateY(-60px);
-}
-
-.toast-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.toast-enter-active {
-  transition: all 0.3s ease;
-} */
 </style>
