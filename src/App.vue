@@ -57,7 +57,7 @@ export default {
 }
 
 .filler {
-  height: 80px;
+  height: 65px;
 }
 
 </style>
