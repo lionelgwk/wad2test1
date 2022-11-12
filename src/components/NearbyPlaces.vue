@@ -1,5 +1,12 @@
 <template>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    
+    <div class="toast-wrap" v-if="showToast">
+        <div class="toastnotif">
+            loading...
+        </div>
+    </div>
+
     <div class="ui grid">
         <div class="six wide column">
             <form class="ui segment large form">
@@ -16,6 +23,7 @@
                             <select v-model="type">
                                 <option value="restaurant" selected>Restaurants</option>
                                 <option value="bar">Bars</option>
+                                <option value="activities">Activities</option>
                             </select>
                         </div>
 
@@ -54,16 +62,27 @@
 
 <script> 
 import axios from 'axios';
+import { ref } from 'vue';
+// import { onMounted } from 'vue';
 
 /* eslint-disable */
 export default {
+    setup(){
+        const showToast = ref(true);
+        const hideToast = () => {
+            showToast.value = false;
+        };
+
+        return { showToast, hideToast }
+    },
     data() {
         return {
-            type: "",
-            radius: "",
+            type: "restaurant",
+            radius: "1",
             lat: 0,
             lng: 0,
-            places: []
+            places: [],
+            mapDisplay: false,
         }
     },
     computed:{
@@ -97,10 +116,12 @@ export default {
         },
         addLocationsToGoogleMaps(){
             var map = new google.maps.Map(this.$refs["map"],{
-                zoom: 15,
+                zoom: 17,
                 center: new google.maps.LatLng(this.lat, this.lng),
-                mapTypeId: google.maps.MapTypeId.ROADMAO
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
+            this.mapDisplay = true;
 
             var infowindow = new google.maps.InfoWindow();
 
@@ -123,7 +144,38 @@ export default {
                     infowindow.open(map, marker);
                 });
             })
+            
+        }
+    },
+    mounted(){
+        this.findLocations();
+    },
+    watch: {
+        coordinates(){
+            this.findNearby();
+        },
+        mapDisplay(){
+            this.hideToast();
         }
     }
 }
 </script>
+
+<style>
+  .toast-wrap {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+    z-index: 99999999;
+  }
+  .toastnotif {
+    padding: 20px;
+    color: white;
+    background: #ff0062;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    z-index: 999999999;
+  }
+</style>

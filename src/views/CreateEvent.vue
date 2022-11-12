@@ -7,6 +7,7 @@
 
 
 
+
   <div id="filler"></div>
   <div class="row">
     <div class="col">
@@ -173,8 +174,10 @@ export default {
 <script>
 
 
+
 import { FirebaseError } from '@firebase/util';
 import NearbyPlaces from '../components/NearbyPlaces.vue';
+
 
 
 export default {
@@ -190,6 +193,7 @@ export default {
   components: {
     NearbyPlaces
   },
+
 
   methods: {
     addFriend() {
@@ -209,6 +213,7 @@ export default {
 #largefiller {
   height: 100px;
 }
+
 
 #filler {
   height: 20px;
@@ -252,5 +257,36 @@ select {
 .row {
   margin-bottom:10px
 }
+
+
+.toast-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+  }
+.toast {
+  padding: 20px;
+  color: white;
+  background: #ff0062;
+  border-radius: 10px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+/* .toast-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.toast-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-enter-active {
+  transition: all 0.3s ease;
+} */
 
 </style>
