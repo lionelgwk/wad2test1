@@ -108,7 +108,7 @@ function handleSignOut() {
 nav {
   position: fixed;
   top: 0;
-  width: 80%;
+  width: 100%;
   margin: 0;
   z-index: 9999;
   font-family: 'Varela Round', sans-serif;
