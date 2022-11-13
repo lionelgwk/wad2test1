@@ -28,7 +28,7 @@
         padding-right: 30px;
         z-index: 998;
         font-family: 'Varela Round', sans-serif;
-        position:relative;
+        position:fixed;
         bottom:0px;
         background-color: white;
     }

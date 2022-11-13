@@ -7,15 +7,27 @@
   <h2>Select your party activites:</h2>
   <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
 
-  <h2>Select your party date:</h2>
-  <input type="date" v-model="date">
+  <hr>
+
+  <div class="row">
+    <div class="col-6">
+      <h2>Select your party date:</h2>
+      <input type="date" v-model="date" required>
+    </div>
+
+    <div class="col-6">
+      <h2>Give your party a little description!</h2>
+      <input type="text" class="form-control" placeholder="Party Description!" v-model="description"/>
+    </div>
+  </div>
+
+  <hr>
 
   <div class="row">
     <div class="col">
-      <div class="ui grid">
-        <div class="six wide column">
-          <h1>Who's In?</h1>
-          <div class="ui segment">
+      <h1>Who's In?</h1>
+
+          <div class="ui segment" style="max-height: 50vh; overflow: scroll;">
             <div class="ui divided items" v-if="selectedFriends.length == 0">
               <div class="item">
                 <div class="content">
@@ -23,6 +35,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="ui divided items" v-if="selectedFriends.length > 0">
               <div class="item" v-for="friend in selectedFriends" :key="friend">
                 <div class="content">
@@ -31,8 +44,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -51,7 +62,7 @@
   <div class="ui grid">
     <div class="six wide column">
       <h1>Activities</h1>
-      <div class="ui segment" style="max-height: 500px; overflow:scroll">
+      <div class="ui segment" style="max-height: 30vh; overflow:scroll">
         <div class="ui divided items" v-if="activities.length == 0">
           <div class="item">
             <div class="content">
@@ -60,7 +71,7 @@
               </div>
             </div>
           </div>
-          </div>
+        </div>
         <div class="ui divided items" v-if="activities.length > 0">
           <div class="item" v-for="place in activities" :key="place.id">
             <div class="content">
@@ -103,6 +114,7 @@ export default {
       selectFriend: '', 
       selectedFriends: [],
       added: false,
+      description: ''
     }
   },
     
@@ -147,23 +159,23 @@ export default {
         partyLeader: user.email,
         partyLeaderName: user.email.split('@')[0],
         friends: this.selectedFriends,
+        description: this.description
       }
 
-      db.collection('parties').add(party)
-        .then(() => {
-            console.log('added to db')
-        })
-      
-        console.log(this.title);
-        console.log(this.activities);
-        console.log(this.date);
-        console.log(this.partyLeader);
-        console.log(this.address);
-        console.log(this.friends);
-        console.log(this.eventStatus);
+      if (party.title == '' || party.date == null || party.description == ''){
+        alert('Please fill out all fields');
+        return;
       }
+      else{
+        db.collection('parties').add(party)
+          .then(() => {
+              console.log('added to db')
+          })
+      }
+      
     }
   }
+}
 
 </script>
 

@@ -73,6 +73,7 @@
   </script>
 
 <style scoped>
+
 input {
     border-radius: 10px;
     width:300px;
@@ -130,7 +131,7 @@ a {
     height:fit-content;
     border-radius: 10px;
     padding:20px;
-    position: absolute;
+    position: relative;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
