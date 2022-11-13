@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
         <div class="row">
             <div class="col-sm-4" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
