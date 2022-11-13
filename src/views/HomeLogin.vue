@@ -30,7 +30,8 @@
       loading="lazy">
       
       <div class="home"  data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
-    <h1><span class="party">Welcome,<br>{{name}}</span></h1>
+        <div class="container">
+    <h1>Welcome,<span class="party"><br>{{name}}</span></h1>
 
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
       <p class="events">Your upcoming events:</p>
@@ -44,7 +45,7 @@
       <p class="click">Click on <router-link :to="{ name: 'myevents'}" class="text-danger">My Parties</router-link> to view more details.</p>
       
   </div>
-
+ </div>
     </div>
   </header>
 
@@ -80,10 +81,9 @@ export default {
 
 <style scoped>
   h1 {
-    padding-top: 110px;
-    font-size: 400%;
+    padding-top: 20%;
+    font-size: 350%;
     text-align: left;
-    padding-left:10%;
     font-weight: bold;
     font-family: 'Varela Round', sans-serif;
 
@@ -92,14 +92,12 @@ export default {
   .desc {
     font-size: 100%;
     text-align: left;
-    padding-left:10%;
     font-family: 'Varela Round', sans-serif;
   }
 
   .events {
     font-size: 100%;
     text-align: left;
-    padding-left:10%;
     font-weight: bold;
     font-family: 'Varela Round', sans-serif;
     color: crimson;
@@ -108,7 +106,7 @@ export default {
   .eventlist {
     font-size: 100%;
     text-align: left;
-    padding-left:15%;
+    padding-left:10%;
     font-family: 'Varela Round', sans-serif;
   }
 
@@ -127,7 +125,8 @@ export default {
   .click {
     font-size: 100%;
     text-align: left;
-    padding-left:10%;
+    padding-left:5%;
+    padding-right:5%;
     font-family: 'Varela Round', sans-serif;
   }
 
@@ -138,4 +137,14 @@ export default {
 
 }
 
+.container {
+  background-color: white;
+  border-color: crimson;
+  border-style: solid;
+  border-radius: 10px;
+  flood-opacity: 80%;
+  margin-left:10%;
+  align-content: flex-start;
+  width:min-content;
+}
 </style>
