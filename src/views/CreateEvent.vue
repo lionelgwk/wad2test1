@@ -25,7 +25,7 @@
       <div class="col-lg-8 col-sm-12">
       <div class="section">
         <h2>Select your party activites:</h2>
-        <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
+        <div class="ui segment" style="height: 60vh; max-height: 70vh; overflow: scroll;">
         <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="col-lg-4 col-md-12">
         <div class="section">
           <h2>Selected activities:</h2>
-          <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
+          <div class="ui segment" style="height: 60vh; max-height: 70vh; overflow: scroll;">
             <div class="ui divided items" v-if="activities.length == 0">
               <div class="item">
                 <div class="content">
