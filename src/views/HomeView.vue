@@ -23,13 +23,15 @@
   <header class="header-2">
     <div class="page-header min-vh-100"
       loading="lazy">
-      <div class="container"  data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
-    <h1><span class="party">Party</span><br>
+      <div  data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
+    <div class = "container"> 
+        <h1><span class="party">Party</span><br>
       Goers</h1>
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
 
       <p class="click">Click <router-link :to="{ name: 'signin'}" class="text-danger">here</router-link> to Sign In.</p>
-  </div>
+    </div>
+    </div>
     </div>
   
   </header>
@@ -91,10 +93,11 @@ export default {
   .page-header{
     background-image: url('@/assets/partygoers.jpg');
     background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     margin: auto;
+    /*background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;*/
+    
     height: 100%;
     width: 100%;
     font-family: 'Varela Round', sans-serif;
