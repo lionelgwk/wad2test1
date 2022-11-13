@@ -96,7 +96,12 @@
   
   <div id="largefiller"></div>
 
-  <router-link :to="{ name: 'createsuccess'}" class="text-light"><button class="button" id="create" @click="submit">Create Party</button></router-link>
+  <div v-if="nullField">
+    <button  class="button" @click="invalidSubmit()">Create Party</button>
+  </div>
+  <div v-else>
+    <router-link :to="{ name: 'createsuccess'}" class="text-light"><button class="button" id="create" @click="submit">Create Party</button></router-link>
+  </div>
     
   
   <div id="largefiller"></div>
@@ -135,8 +140,15 @@
       NearbyPlaces,
       AddFriends
     },
-  
-  
+    computed:{
+      nullField(){
+        if (this.title == '' || this.description == '' || this.activities == '' || this.date == '' || this.partyLeader == '' || this.address == '' || this.friends == ''){
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
     methods: {
       addActivity(place){
         if (!this.activities.includes(place)){
@@ -157,8 +169,8 @@
         }
       },
       removeFriend(friend){
-      this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
-      document.getElementById(friend.email).disabled = false;
+        this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+        document.getElementById(friend.email).disabled = false;
       },
       submit(){
         const auth = getAuth();
@@ -187,9 +199,14 @@
           console.log(this.partyLeader);
           console.log(this.address);
           console.log(this.friends);
-          }
+        },
+        invalidSubmit(){
+          alert('Fill up all fields!');
+          console.log('hello');
         }
-      }
+      }    
+    }
+
     
   
   
