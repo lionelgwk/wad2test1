@@ -1,6 +1,5 @@
 <template>
-    <div class="container" @load="explode">
-        
+    <div @load="explode">
         <div class="row">
             <div class="col-md-6 mx-auto mt-5">
                 <div class="payment">

@@ -34,12 +34,7 @@ default-breakpoint="tiny"
 <h1>Welcome,<span class="party"><br>{{name}}</span></h1><br>
 
   <p class="desc">We're here to make planning exciting outings with your friends easier!</p><br>
-  <p class="events">Your upcoming events:</p>
-  <ul class="eventlist">
-    <li>CCA outing</li>
-    <li>Secondary school reunion</li>
-    <li>Family gathering</li>
-  </ul><br><br>
+  <br><br>
 
 
   <p class="click">Click on <span class="event_link"><router-link :to="{ name: 'myevents'}" class="text-danger">My Parties</router-link></span> to view more details.</p>
