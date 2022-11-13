@@ -1,21 +1,24 @@
 <template>
 
 <div>
+    <div class="container-fluid">
+      <br>
     <h1>Parties You Created</h1>
     <ul class="cards">
       <li v-for="party in myParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
-            <div class="card__header">
+            <h5 class="card__header"> {{party.title}}</h5>
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
+               
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
-            </div>
-            <p class="card__description">{{party.partyLeaderName}}</p>
+            
+            <!-- <p class="card__description">{{party.partyLeaderName}}</p> -->
           </div>
         </router-link>
       </li>
@@ -29,19 +32,19 @@
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
-            <div class="card__header">
+            <h5 class="card__header"> {{party.title}}</h5>
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
-            </div>
             <p class="card__description">{{party.partyLeaderName}}</p>
           </div>
         </router-link>
       </li>
     </ul>
+</div>
 </div>
 
 
@@ -154,7 +157,7 @@ body {
   right: 0;
   z-index: 1;      
   border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);      
+  background-color: white;      
   transform: translateY(100%);
   transition: .2s ease-in-out;
 }
@@ -168,11 +171,14 @@ body {
   display: flex;
   align-items: center;
   gap: 2em;
-  padding: 2em;
+  padding:1em;
+  height:60px;
   border-radius: calc(var(--curve) * 1px) 0 0 0;    
   background-color: var(--surface-color);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
+  background-color: crimson;
+  color:white;
 }
 
 .card__arc {
