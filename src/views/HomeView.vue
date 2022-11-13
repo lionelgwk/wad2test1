@@ -20,11 +20,8 @@
   
   <header class="header-2">
     <div class="page-header min-vh-100"
-      :style="{
-        backgroundImage: 'https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-      }"
       loading="lazy">
-      <div class="home" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
+      <div class="container" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine"><br>
     <h1><span class="party">Party</span><br>
       Goers</h1>
       <p class="desc">We're here to make planning exciting<br> outings with your friends easier!</p><br>
@@ -55,6 +52,12 @@ export default {
 </script>
 
 <style scoped>
+
+  .container {
+    margin-left:10px;
+    position: relative;
+  }
+
   h1 {
     padding-top: 180px;
     font-size: 100px;
@@ -62,29 +65,12 @@ export default {
     padding-left:130px;
     font-weight: bold;
     font-family: 'Varela Round', sans-serif;
-
   }
 
   .desc {
     font-size: 20px;
     text-align: left;
     padding-left:130px;
-    font-family: 'Varela Round', sans-serif;
-  }
-
-  .events {
-    font-size: 40px;
-    text-align: left;
-    padding-left:130px;
-    font-weight: bold;
-    font-family: 'Varela Round', sans-serif;
-    color: crimson;
-  }
-
-  .eventlist {
-    font-size: 20px;
-    text-align: left;
-    padding-left:160px;
     font-family: 'Varela Round', sans-serif;
   }
 
@@ -103,7 +89,6 @@ export default {
     padding-left:130px;
     font-family: 'Varela Round', sans-serif;
   }
-
 
 .party {
   color:crimson;
