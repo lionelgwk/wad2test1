@@ -21,7 +21,6 @@
 default-breakpoint="tiny"
 :breakpoints="{small: 576, medium: 768, large: 992, xlarge:1200 }">
 
-
 <header class="header-2">
 
 <div class="page-header min-vh-100"
@@ -34,7 +33,13 @@ default-breakpoint="tiny"
     <div class="container">
 <h1>Welcome,<span class="party"><br>{{name}}</span></h1><br>
 
-  <p class="desc">We're here to make planning exciting outings with your friends easier!</p> <br>
+  <p class="desc">We're here to make planning exciting outings with your friends easier!</p><br>
+  <p class="events">Your upcoming events:</p>
+  <ul class="eventlist">
+    <li>CCA outing</li>
+    <li>Secondary school reunion</li>
+    <li>Family gathering</li>
+  </ul><br><br>
 
 
   <p class="click">Click on <span class="event_link"><router-link :to="{ name: 'myevents'}" class="text-danger">My Parties</router-link></span> to view more details.</p>
@@ -45,9 +50,6 @@ default-breakpoint="tiny"
 </header>
 
 </ResponsiveContainer>
-
-
-
 
 
 </template>
@@ -121,4 +123,24 @@ padding-left:5%;
 padding-right:5%;
 font-family: 'Varela Round', sans-serif;
 }
-</style>
+.party {
+color:crimson;
+font-family: 'Varela Round', sans-serif;
+}
+.container {
+background-color: white;
+border-color: crimson;
+border-style: solid;
+border-radius: 10px;
+flood-opacity: 80%;
+margin-left:10%;
+height:auto;
+align-content: flex-start;
+width:min-content;
+}
+
+.event_link:hover{
+  font-weight:bold;
+  font-size:25px;
+  transition: 0.5s;
+}</style>
