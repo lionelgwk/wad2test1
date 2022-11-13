@@ -2,43 +2,77 @@
 
   <div id="largefiller"></div>
   
-  <input type="text" placeholder="Enter Your Party Name" class="text-align-center">
-  <div id="filler"></div>
+  <input type="text" placeholder="Enter Your Party Name" class="text-align-center" v-model="title">
 
+  <h2>Select your party activites:</h2>
+  <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
 
-
-
-  <div id="filler"></div>
-  <div class="row">
-    <div class="col">
-      <h2>Select your friends:</h2>
-    </div>
-    <div class="col">
-      <h2>Name of Party Host:</h2>
-    </div>
-  </div>
+  <h2>Select your party date:</h2>
+  <input type="date" v-model="date">
 
   <div class="row">
     <div class="col">
-      <select class="select" aria-label="Default select example" v-model="selectFriend">
-        <option v-for="friend in friends" :key="friend" selected>{{friend}}</option>
-      </select>
-      <button class="button" v-on:click="addFriend()">Add friend</button>
+      <div class="ui grid">
+        <div class="six wide column">
+          <h1>Who's In?</h1>
+          <div class="ui segment">
+            <div class="ui divided items" v-if="selectedFriends.length == 0">
+              <div class="item">
+                <div class="content">
+                  <h2>Looking lonely... Get your mates in!</h2>
+                </div>
+              </div>
+            </div>
+            <div class="ui divided items" v-if="selectedFriends.length > 0">
+              <div class="item" v-for="friend in selectedFriends" :key="friend">
+                <div class="content">
+                  <h2>{{friend.name}}</h2>
+                  <button  class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-      
+
     <div class="col">
-      <div id="filler"></div>
-      user
+      <AddFriends @add-friend="addFriend"></AddFriends>
     </div>
+
   </div>
   
   <div id="filler"></div>
-  <h2>Select your party activites:</h2>
-  <NearbyPlaces></NearbyPlaces>
+
 
   <div id="filler"></div>
-  <h2>Select your party date:</h2>
-  <input type="date" v-model="date">
+
+
+  <div class="ui grid">
+    <div class="six wide column">
+      <h1>Activities</h1>
+      <div class="ui segment" style="max-height: 500px; overflow:scroll">
+        <div class="ui divided items" v-if="activities.length == 0">
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                <p>It's looking boring... Add an activity!</p>
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="ui divided items" v-if="activities.length > 0">
+          <div class="item" v-for="place in activities" :key="place.id">
+            <div class="content">
+              <div class="header">{{place.name}}</div>
+              <div class="meta">{{place.vicinity}}</div>
+              <button class="ui button red" @click="removePlace(place)">Add Activity</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="filler"></div>
   <button class="button" @click="submit">Create Party</button>
@@ -53,11 +87,9 @@
 import db from "@/fb";
 import NearbyPlaces from '../components/NearbyPlaces.vue';
 import { getAuth } from "firebase/auth";
+import AddFriends from '../components/AddFriends.vue';
 
 export default {
-  created(){
-
-  },
   name: 'CreateEvent',
   data() {
     return  {
@@ -68,29 +100,41 @@ export default {
       partyLeaderName: '',
       address: [],
       friends: [],
-      eventStatus: '',
       selectFriend: '', 
       selectedFriends: [],
+      added: false,
     }
   },
     
   components: {
     NearbyPlaces,
+    AddFriends
+
   },
 
 
   methods: {
+    addActivity(place){
+      if (!this.activities.includes(place)){
+        this.activities.push(place);
+      }
+    },
+    removePlace(place){
+      this.activities.splice(this.activities.indexOf(place), 1);
+    },
     updateLocation(location) {
       this.location = location;
-      console.log(this.location);
     },
-    addFriend() {
-      if (this.selectedFriends.includes(this.selectFriend)) {
+    addFriend(friend) {
+      if (this.selectedFriends.includes(friend)) {
         return
       } else {
-        this.selectedFriends.push(this.selectFriend);
+        this.selectedFriends.push(friend);
       }
-      console.log(this.selectedFriends);
+    },
+    removeFriend(friend){
+      this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      document.getElementById(friend.email).disabled = false;
     },
     submit(){
       const auth = getAuth();
@@ -102,9 +146,7 @@ export default {
         date: this.date,
         partyLeader: user.email,
         partyLeaderName: user.email.split('@')[0],
-        address: this.address,
-        friends: this.friends,
-        eventStatus: 'ongoing'
+        friends: this.selectedFriends,
       }
 
       db.collection('parties').add(party)
@@ -112,13 +154,13 @@ export default {
             console.log('added to db')
         })
       
-      console.log(this.title);
-      console.log(this.activities);
-      console.log(this.date);
-      console.log(this.partyLeader);
-      console.log(this.address);
-      console.log(this.friends);
-      console.log(this.eventStatus);
+        console.log(this.title);
+        console.log(this.activities);
+        console.log(this.date);
+        console.log(this.partyLeader);
+        console.log(this.address);
+        console.log(this.friends);
+        console.log(this.eventStatus);
       }
     }
   }
@@ -128,7 +170,7 @@ export default {
 <style>
 
 #largefiller {
-  height: 100px;
+  height: 60px;
 }
 
 
@@ -191,19 +233,5 @@ select {
   margin: 0 auto;
 }
 
-
-/* .toast-enter-from {
-  opacity: 0;
-  transform: translateY(-60px);
-}
-
-.toast-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.toast-enter-active {
-  transition: all 0.3s ease;
-} */
 
 </style>
