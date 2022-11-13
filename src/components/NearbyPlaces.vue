@@ -8,14 +8,14 @@
             </div>
         </div>
     </transition>
-
-    <div class="ui grid">
-        <div class="six wide column">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <form class="ui segment large form">
                 <div class="field">
                     <div class="ui right icon input large">
-                        <input type="text" placeholder="Enter a place" ref="add"/>
-                        <i class="search link icon" @click="findNearby"></i>
+                        <input type="text" id="placeEnter" placeholder="Enter a place" ref="add" autocomplete="on"/>
+                        <i class="search icon" @click="findNearby"></i>
                     </div>
                 </div>
 
@@ -25,18 +25,32 @@
                             <select v-model="type">
                                 <option value="restaurant" selected>Restaurants</option>
                                 <option value="bar">Bars</option>
-                                <option value="activities">Activities</option>
+                                <option value="cafe">Cafes</option>
+                                <option value="bowling_alley">Bowling</option>
+                                <option value="bicycle_store">Cycling</option>
+                                <option value="campground">Camping</option>
+                                <option value="clothing_store">Clothes Shopping</option>
+                                <option value="shoe_store">Shoe Shopping</option>
+                                <option value="jewelry_store">Jewelry Shopping</option>
+                                <option value="museum">Museums</option>
+                                <option value="movie_theater">Movies</option>
+                                <option value="casino">Casinos</option>
+                                <option value="park">Parks</option>
+                                <option value="night_club">Night Clubs</option>
+                                <option value="tourist_attraction">Sightseeing</option>
+                                <option value="spa">Spas</option>
+                                <option value="gym">Workout</option>
                             </select>
                         </div>
 
 
                         <div class="field">
                             <select v-model="radius">
-                                <option value="1" selected>1 KM</option>
-                                <option value="2">2 KM</option>
-                                <option value="3">3 KM</option>
-                                <option value="4">4 KM</option>
-                                <option value="5">5 KM</option>
+                                <option value="0.2" selected>200M</option>
+                                <option value="0.4">400M</option>
+                                <option value="0.6">600M</option>
+                                <option value="0.8">800M</option>
+                                <option value="1">1 KM</option>
                             </select>
                         </div>
                     </div>
@@ -51,15 +65,17 @@
                         <div class="content">
                             <div class="header">{{place.name}}</div>
                             <div class="meta">{{place.vicinity}}</div>
+                            <button class="ui button blue" @click="addPlace(place)">Add Activity</button>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="ten wide column segment ui" ref="map">
+        <div class="col-lg-8 col-md-6 col-sm-12" ref="map">
         </div>
     </div>
+</div>
 </template>
 
 <script> 
@@ -80,6 +96,8 @@ export default {
             bounds: new google.maps.LatLngBounds(
                 new google.maps.LatLng(1.3521, 103.8198)
             ),
+            componentRestrictions: { country: "sg" },
+            type: ["address", "establishment", "point_of_interest", "food"],
         });
 
         
@@ -95,7 +113,7 @@ export default {
     data() {
         return {
             type: "restaurant",
-            radius: "1",
+            radius: "0.2",
             lat: 0,
             lng: 0,
             places: [],
@@ -104,12 +122,17 @@ export default {
             showToast: true,
         };
     },
+    emits: ["add-place"],
     computed: {
         coordinates() {
             return `${this.lat}, ${this.lng}`;
         }
     },
     methods: {
+        addPlace(place){
+            this.$emit('add-place', place);
+            console.log(place);
+        },
         findLocations() {
             navigator.geolocation.getCurrentPosition(position => {
                 this.lat = position.coords.latitude;
@@ -119,7 +142,7 @@ export default {
             });
         },
         findNearby() {
-            const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.lat},${this.lng}&type=${this.type}&radius=${this.radius * 1000}&key=AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4`;
+            const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.lat},${this.lng}&type=${this.type}&radius=${this.radius * 1000}&key=AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4`;
             this.showToast = true;
             axios.get(URL)
                 .then(response => {
@@ -161,6 +184,12 @@ export default {
     },
     watch:{
         coordinates() {
+            this.findNearby();
+        },
+        type() {
+            this.findNearby();
+        },
+        radius() {
             this.findNearby();
         },
         lat() {
@@ -221,4 +250,5 @@ export default {
     .toastmotion-leave-active {
         transition: all 0.3s ease;
     }
+
 </style>

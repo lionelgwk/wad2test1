@@ -1,26 +1,21 @@
 <template>
-  <div class="about">
-    <div class="carousel-bg">
-      <AboutCarousel></AboutCarousel>
-    </div>    
-  </div>
-
+    <div class="bg">
+      <h3>Do these sound familiar?</h3>
+      <AboutCard></AboutCard>
   <hr>
+    <h3>PartyGoers can help!</h3>
+      <AboutCarousel></AboutCarousel><br>
 
-  <AboutCard></AboutCard>
+  <router-link :to="{ name: 'registeraccount'}" class="btn btn-danger">Start Partying!</router-link><br><br><br><br>
 
-
-  <!-- <button class="btn btn-warning" data-aos="fade-up">Start Partying!</button> -->
-  <router-link :to="{ name: 'registeraccount'}" class="btn btn-warning" data-aos="fade-up">Start Partying!</router-link>
-
-
-
+  </div>
+  
 </template>
 
 <script>
 
-import AboutCarousel from '../components/AboutCarousel.vue'
-import AboutCard from '../components/AboutCard.vue'
+import AboutCarousel from '@/components/AboutCarousel.vue'
+import AboutCard from '@/components/AboutCard.vue'
 
 export default {
   components:{
@@ -36,8 +31,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald&family=Raleway:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Varela+Round&display=swap');
 
 
 
@@ -45,11 +38,19 @@ h1 {
   font-weight: bold;
 }
 
-.carousel-bg {
-  margin-top: 60px;
-  background-color: rgb(83, 5, 122);
+.bg {
+  background-color: rgb(255,250,247);
+  font-family: 'Varela Round', sans-serif;
+  min-height: 100%;
 }
 
+
+h3 {
+  padding-top: 30px;
+  padding-bottom:10px;
+  font-weight: bold;
+  color:crimson
+}
 
 .btn {
   font-family: 'Varela Round', sans-serif;
@@ -61,7 +62,7 @@ h1 {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  z-index: 9999;
+  margin:auto;
 }
 
 </style>

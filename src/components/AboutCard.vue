@@ -4,8 +4,8 @@
             <div class="col-sm-4" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
                     <div class="card-body">
-                        <h5 class="card-title">Know What's Around You</h5>
-                        <p class="card-text">Our website offers you the most popular activities based on your desired destination.</p>
+                        <h5 class="card-title">Difficulty tracking your events</h5>
+                        <p class="card-text">Too many plans with friends? Finding it hard to account for all your hangouts?</p>
                     </div>
                 </div>
             </div>
@@ -13,8 +13,8 @@
             <div class="col-sm-4" data-aos="fade-down" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
                     <div class="card-body">
-                        <h5 class="card-title">Plan Together</h5>
-                        <p class="card-text">Plan your day with those that will spend it with you. Add and vote for your favorite activities in real time.</p>
+                        <h5 class="card-title">Unsure of what to do</h5>
+                        <p class="card-text">Having trouble thinking of exciting activities to do with friends? Running out of good suggestions?</p>
                     </div>
                 </div>
             </div>
@@ -22,8 +22,8 @@
             <div class="col-sm-4" data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine">
                 <div class="card border-0">
                     <div class="card-body">
-                        <h5 class="card-title">Active Recommendations</h5>
-                        <p class="card-text">Unsure on what to do or bring? Anna, our smart application is here to help! She never misses out on the small, yet important details.</p>
+                        <h5 class="card-title">Poor communication</h5>
+                        <p class="card-text">Missing friends' messages because of the many notifications in your messaging apps?</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,10 @@
 <script>
 </script>
 
-<style>
+<style scoped> 
+.card-body {
+    background-color: rgb(255,250,247);
+}
 
 .card-title {
     display: inline;
