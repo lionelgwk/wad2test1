@@ -1,6 +1,6 @@
 <template>
 
-<div class="bg">
+<div class="bg" id="screen">
   <div id="largefiller"></div>
   
   <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title"><br><br>
@@ -9,7 +9,7 @@
   <div id="filler"></div>
   <div id="filler"></div>
 
-  <div class="container">
+  <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-sm-12">
     <div class="section">
@@ -19,13 +19,13 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <div class="section">
-        <h1>Activities</h1>
+        <h2>Selected activities:</h2>
         <div class="ui segment" style="max-height: 500px; overflow:scroll">
           <div class="ui divided items" v-if="activities.length == 0">
             <div class="item">
               <div class="content">
                 <div class="header">
-                  <p>It's looking boring... Add an activity!</p>
+                  <h3 class="fst-italic">It's looking boring... Add an activity!</h3>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
 </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-sm-12">
     <div class="section">
@@ -54,12 +54,12 @@
     </div>
     <div class="col-lg-4 col-md-12">
       <div class="section">
-        <h1>Who's In?</h1>
+        <h2>Who's in?</h2>
         <div class="ui segment">
           <div class="ui divided items" v-if="selectedFriends.length == 0">
             <div class="item">
               <div class="content">
-                <h2>Looking lonely... Get your mates in!</h2>
+                <h3 class="fst-italic">It's looking lonely... Get your mates in!</h3>
               </div>
             </div>
           </div>
@@ -78,14 +78,15 @@
 </div>
 
 <div id="largefiller"></div>
-<button class="button" @click="submit">Create Party</button>
+<button class="button" @click="submit" id="create">Create Party</button>
+
+<!--modal-->
+
+
 <div id="largefiller"></div>
 <div id="largefiller"></div>
 <div id="largefiller"></div>
-
-
-  </div>
-
+</div>
 </template>
 
 
@@ -109,14 +110,13 @@ export default {
       friends: [],
       selectFriend: '', 
       selectedFriends: [],
-      added: false,
+      added: false
     }
   },
     
   components: {
     NearbyPlaces,
     AddFriends
-
   },
 
 
@@ -166,10 +166,11 @@ export default {
         console.log(this.partyLeader);
         console.log(this.address);
         console.log(this.friends);
-        console.log(this.eventStatus);
+        }
       }
     }
-  }
+  
+
 
 </script>
 
