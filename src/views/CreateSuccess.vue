@@ -8,8 +8,8 @@
                         <div style="padding-left:300px; padding-top:50px"><ConfettiExplosion v-if="visible"/></div>
                         <h1 class="pt-0">Party Created!</h1>
                         <img src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png">
-                        <p>Head over to 'My Events' to check it out!</p>
-                        <router-link :to="{ name: 'myevents'}" class="link">Go to My Events</router-link>
+                        <p>Head over to 'My Parties' to check it out!</p>
+                        <router-link :to="{ name: 'myevents'}" class="link">Go to My Parties</router-link>
                     </div>              
                 </div>
             </div>
