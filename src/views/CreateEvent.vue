@@ -96,8 +96,7 @@
   
   <div id="largefiller"></div>
 
-  
-  <button class="button" @click="submit" id="create"><router-link :to="{ name: 'createsuccess'}" class="text-light">Create Party</router-link></button>
+  <router-link :to="{ name: 'createsuccess'}" class="text-light"><button class="button" id="create" @click="submit">Create Party</button></router-link>
     
   
   <div id="largefiller"></div>
@@ -274,6 +273,13 @@
       margin-bottom:0px;
       border-radius:10px
   }
+
+  #create {
+    width: 30%;
+    height:50px;
+
+  }
+  
   
   button:hover {
       box-shadow: 0 0 5pt 2pt #D3D3D3;
@@ -307,5 +313,4 @@
     margin: 0 auto;
     font-family: 'Varela Round', sans-serif;
   }
-  
   </style>
