@@ -99,8 +99,5 @@ h1{
     list-style:none;
     padding-right:32px;
  }
-.inline{
-    display: inline-block;
-}
 
 </style>
