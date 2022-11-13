@@ -8,6 +8,8 @@ import RegisterAccount from '../views/RegisterAccount.vue'
 import SignIn from '../views/SignIn.vue'
 import HomeLogin from '../views/HomeLogin.vue'
 import CreateSuccess from '../views/CreateSuccess.vue'
+import EventDetails from '../views/EventDetails.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 const routes = [
@@ -59,6 +61,17 @@ const routes = [
     path: '/createsuccess',
     name: 'createsuccess',
     component: CreateSuccess
+  },
+  {
+    path: '/myevents/:id',
+    name: 'eventdetails',
+    component: EventDetails,
+    props: true
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'notfound',
+    component: NotFound
   }
   
 

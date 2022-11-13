@@ -2,7 +2,9 @@
 
 <ul class="cards">
   <li v-for="party in parties" :key="party">
-    <a href="" class="card">
+    <router-link :to="{ name: 'eventdetails', params: {
+        id: party.id
+    }}" class="text-danger">
       <img :src="imgURL" class="card__image" alt="" />
       <div class="card__overlay">
         <div class="card__header">
@@ -15,7 +17,7 @@
         </div>
         <p class="card__description">{{party.partyLeaderName}}</p>
       </div>
-    </a>      
+    </router-link>   
   </li>
 </ul>
 
