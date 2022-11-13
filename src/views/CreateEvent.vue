@@ -79,7 +79,9 @@
   </div>
   
   <div id="largefiller"></div>
-  <button class="button" @click="submit" id="create">Create Party</button>
+
+  
+  <button class="button" @click="submit" id="create"><router-link :to="{ name: 'createsuccess'}" class="text-light">Create Party</router-link></button>
     
   
   <div id="largefiller"></div>

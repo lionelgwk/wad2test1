@@ -1,23 +1,34 @@
 <template>
-
-    <div class="container">
+    <div class="container" @load="explode">
+        
         <div class="row">
             <div class="col-md-6 mx-auto mt-5">
                 <div class="payment">
-                    <div class="payment_header">
-                        <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
-                    </div>
                     <div class="content">
-                        <h1>Party Created !</h1>
+                        <div style="padding-left:300px; padding-top:50px"><ConfettiExplosion v-if="visible"/></div>
+                        <h1 class="pt-0">Party Created!</h1>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1161/1161670.png">
                         <p>Head over to 'My Events' to check it out!</p>
-                        <router-link :to="{ name: 'myevents'}" class="text-danger">Go to My Events</router-link>
+                        <router-link :to="{ name: 'myevents'}" class="link">Go to My Events</router-link>
                     </div>              
                 </div>
             </div>
         </div>
+        
     </div>
 
 </template>
+
+<script setup>
+  import { nextTick, ref } from "vue";
+  import ConfettiExplosion from "vue-confetti-explosion";
+
+  const visible = ref(true);
+
+  const explode = async () => {
+    await nextTick();
+  };
+</script>
 
 <script>
 export default {
@@ -26,45 +37,26 @@ export default {
 </script>
 
 <style>
-    body{
-        background: #f2f2f2;
-    }
 
     .payment {
         border: 1px solid #f2f2f2;
         height:280px;
         border-radius: 20px;
-        background:#fff;
+        box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+        margin-top:20%;
+        background-color: rgb(255,250,247);
     }
-
-    .payment_header{
-        background: rgba(255,102,0,1);
-        padding: 20px;
-        border-radius: 20px 20px 0 0;
-    }
-
-    .check{
-        margin: 0px auto;
-        width: 50px;
-        height: 50px;
-        border-radius: 100%;
-        background: #fff;
-        text-align:center;
-    }
-
-    .check i{
-        vertical-align: middle;
-        line-height:50px;
-        font-size:30px;
-    }
-
+    
     .content{
         text-align: center;
+        font-family: 'Varela Round', sans-serif;
+        
     }
 
     .content h1 {
         font-size: 25px;
         padding-top: 25px;
+        font-weight: bold;
     }
 
     .content a{
@@ -73,12 +65,23 @@ export default {
         color:#fff;
         border-radius: 30px;
         padding: 5px 10px;
-        background: rgba(255,102,0,1);
+        background: crimson;
         transition: all ease-in-out 0.3s;
     }
 
     .content a:hover{
         text-decoration: none;
-        background: #000;
+        background: white;
+        color:crimson;
+        box-shadow: 0 0 5pt 2pt #D3D3D3;
+    }
+
+    img {
+        height:40px;
+        margin: 5px;
+    }
+
+    .link {
+        text-decoration: none;
     }
 </style>
