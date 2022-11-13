@@ -33,11 +33,11 @@
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
-                <h3 class="card__title">{{ party.partyLeaderName }}</h3>
+                <h3 class="card__title">{{ party.title }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
             </div>
-            <p class="card__description">{{party.partyLeaderName}}</p>
+            <p class="card__description">{{party.title}}</p>
           </div>
         </router-link>
       </li>
@@ -123,6 +123,7 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   background-color: #fef8f8;
 }
+
 
 .cards {
   display: grid;
