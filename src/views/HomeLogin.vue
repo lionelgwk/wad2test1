@@ -21,6 +21,7 @@
 default-breakpoint="tiny"
 :breakpoints="{small: 576, medium: 768, large: 992, xlarge:1200 }">
 
+
 <header class="header-2">
 
 <div class="page-header min-vh-100"
@@ -44,6 +45,9 @@ default-breakpoint="tiny"
 </header>
 
 </ResponsiveContainer>
+
+
+
 
 
 </template>
@@ -73,6 +77,7 @@ components: {
 </script>
 
 <style scoped>
+
 h1 {
 padding-top: 20%;
 font-size: 350%;
@@ -115,27 +120,5 @@ text-align: left;
 padding-left:5%;
 padding-right:5%;
 font-family: 'Varela Round', sans-serif;
-}
-.party {
-color:crimson;
-font-family: 'Varela Round', sans-serif;
-}
-.container {
-background-color: white;
-border-color: crimson;
-border-style: solid;
-border-radius: 10px;
-flood-opacity: 80%;
-margin-left:10%;
-margin-right:10%;
-margin-top:2.5%;
-align-content: flex-start;
-width:min-content;
-}
-
-.event_link:hover{
-  font-weight:bold;
-  font-size:25px;
-  transition: 0.5s;
 }
 </style>

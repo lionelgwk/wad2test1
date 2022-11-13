@@ -1,12 +1,14 @@
 <template>
     <header class="header-2">
     <div class="page-header min-vh-100" loading="lazy">
+        &nbsp;
       <div class="container" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <div class="center">
         <h2>Create an<br>Account</h2><br>
             <p><input type="text" placeholder="Email" v-model="email"/></p>
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p><button @click="register" class="button">Register</button></p>
+            <p>OR</p>
             <p><button @click="signInWithGoogle" class="button google">Register With Google</button></p>
         </div>
   </div>
@@ -86,7 +88,8 @@ input {
     border: none;
     padding:5px 10px 5px 10px;
     font-size: 15px;
-    margin-bottom:0px
+    margin-bottom:0px;
+    border-radius: 10px;
 }
 
 .google {

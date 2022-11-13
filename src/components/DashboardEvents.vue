@@ -12,16 +12,20 @@
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
+
             <h5 class="card__header"> {{party.title}}</h5>
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
                
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
+
         
             <!-- <p class="card__description">{{party.partyLeaderName}}</p> -->
+
           </div>
         </router-link>
       </li>
@@ -43,10 +47,12 @@
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
-                <h3 class="card__title">{{ party.partyLeaderName }}</h3>
+                <h3 class="card__title">{{ party.title }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
+
             <p class="card__description">{{party.partyLeaderName}}</p>
+
           </div>
         </router-link>
       </li>
@@ -72,6 +78,7 @@ export default{
         return {
             myParties: [],
             theirParties: [],
+
             imgURL: 'https://media.istockphoto.com/photos/festival-event-party-with-hipster-people-blurred-background-picture-id613897214?b=1&k=20&m=613897214&s=170667a&w=0&h=-kMh6hhUXyGXn9sRXXj_Nc4aqalA3jCoqFUGsg3AG2I='
             
         }
@@ -139,6 +146,7 @@ body {
   background-color: #fef8f8;
 }
 
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -171,6 +179,7 @@ body {
   z-index: 1;      
   border-radius: calc(var(--curve) * 1px);    
   background-color: white;      
+
   transform: translateY(100%);
   transition: .2s ease-in-out;
 }
@@ -184,10 +193,12 @@ body {
   display: flex;
   align-items: center;
   gap: 2em;
+
   padding:1em;
   height:60px;
   border-radius: calc(var(--curve) * 1px) 0 0 0;    
   background-color: var(--surface-color);
+
   transform: translateY(-100%);
   transition: .2s ease-in-out;
   background-color: crimson;
@@ -241,7 +252,7 @@ body {
 .card__description {
   padding: 0 2em 2em;
   margin: 0;
-  color: #D7BDCA;
+  color: black;
   font-family: "MockFlowFont";   
   display: -webkit-box;
   -webkit-box-orient: vertical;
