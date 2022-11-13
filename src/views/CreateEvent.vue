@@ -71,7 +71,7 @@
       </div>
       <div class="col-lg-4 col-md-12">
         <div class="section">
-          <h2>Who's in?</h2>
+          <h2>Friends added:</h2>
           <div class="ui segment" style="height: 50vh; max-height: 40vh; overflow: scroll">
             <div class="ui divided items" v-if="selectedFriends.length == 0">
               <div class="item">
