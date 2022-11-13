@@ -1,36 +1,64 @@
 <template>
 
-<ul class="cards">
-  <li v-for="party in parties" :key="party">
-    <router-link :to="{ name: 'eventdetails', params: {
-        id: party.id
-    }}" class="text-danger">
-      <img :src="imgURL" class="card__image" alt="" />
-      <div class="card__overlay">
-        <div class="card__header">
-          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>                     
-          <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
-          <div class="card__header-text">
-            <h3 class="card__title">{{ party.partyLeaderName }}</h3>            
-            <span class="card__status">{{ party.date }}</span>
+<div>
+    <h1>Parties You Created</h1>
+    <ul class="cards">
+      <li v-for="party in myParties" :key="party">
+        <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
+          <img :src="imgURL" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+              <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+              <div class="card__header-text">
+                <h3 class="card__title">{{ party.partyLeaderName }}</h3>
+                <span class="card__status">{{ party.date }}</span>
+              </div>
+            </div>
+            <p class="card__description">{{party.partyLeaderName}}</p>
           </div>
-        </div>
-        <p class="card__description">{{party.partyLeaderName}}</p>
-      </div>
-    </router-link>   
-  </li>
-</ul>
+        </router-link>
+      </li>
+    </ul>
+</div>
+
+<div>
+    <h1>Parties You Joined</h1>
+    <ul class="cards">
+      <li v-for="party in theirParties" :key="party">
+        <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
+          <img :src="imgURL" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+              <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+              <div class="card__header-text">
+                <h3 class="card__title">{{ party.partyLeaderName }}</h3>
+                <span class="card__status">{{ party.date }}</span>
+              </div>
+            </div>
+            <p class="card__description">{{party.partyLeaderName}}</p>
+          </div>
+        </router-link>
+      </li>
+    </ul>
+</div>
+
+
 
 </template>
 
-<script>
+<script scoped>
 import db from '@/fb';
+import { getAuth } from "firebase/auth";
+
 
 export default{
     data(){
         return {
-            parties: [],
-            imgURL: 'https://i.imgur.com/oYiTqum.jpg'
+            myParties: [],
+            theirParties: [],
+            imgURL: 'https://cdn-icons-png.flaticon.com/512/1161/1161670.png'
         }
     },
     methods:{
@@ -42,18 +70,41 @@ export default{
         }
     },
     mounted(){
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+
         db.collection('parties').onSnapshot(res => {
             const changes = res.docChanges();
             changes.forEach(change => {
                 if (change.type === 'added'){
-                    this.parties.push({
-                        ...change.doc.data(),
-                        id: change.doc.id
-                    })
+                    if (change.doc.data().partyLeader == user.email){
+                        this.myParties.push({
+                            ...change.doc.data(),
+                            id: change.doc.id
+                        })
+                    }
+                    else {
+                        for (var i = 0; i < change.doc.data().friends.length; i++){
+                            var involvesUser = false;
+                            if (change.doc.data().friends[i].email == user.email){
+                                involvesUser = true;
+                            }
+                            if (involvesUser){
+                            this.theirParties.push({
+                                ...change.doc.data(),
+                                id: change.doc.id
+                            })
+                        }
+                        }
+                        
+                    }
+                    // console.log(change.doc.data().friends.email);
+                    console.log(user.email);
                 }
             })
         })
-        console.log(this.parties)
+        console.log(this.myParties)
     }
 }
 </script>
