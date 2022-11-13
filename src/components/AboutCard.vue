@@ -36,7 +36,7 @@
 <script>
 </script>
 
-<style>
+<style scoped> 
 .card-body {
     background-color: rgb(255,250,247);
 }

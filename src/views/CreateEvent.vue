@@ -167,7 +167,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 #largefiller {
   height: 60px;
