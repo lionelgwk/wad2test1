@@ -1,6 +1,7 @@
 <template>
     <header class="header-2">
     <div class="page-header min-vh-100" loading="lazy">
+        &nbsp;
       <div class="container" data-aos="fade-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <div class="center">
         <h2>Create an<br>Account</h2><br>
