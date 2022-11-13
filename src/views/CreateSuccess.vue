@@ -36,7 +36,9 @@ export default {
 };
 </script>
 
-<style>
+
+<style scoped>
+
 
     .payment {
         border: 1px solid #f2f2f2;

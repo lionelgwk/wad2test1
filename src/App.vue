@@ -8,9 +8,10 @@
 
 
 
-    <PageFooter></PageFooter>
-  </body>
     
+  </body>
+  <PageFooter></PageFooter>
+  <div class="filler">&nbsp;</div>
 </template>
 
 

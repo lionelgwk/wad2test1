@@ -8,14 +8,14 @@
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
             <div class="card__header">
-              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
             </div>
-            <p class="card__description">{{party.partyLeaderName}}</p>
+            <p class="card__description">{{party.description}}</p>
           </div>
         </router-link>
       </li>
@@ -33,11 +33,11 @@
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
-                <h3 class="card__title">{{ party.partyLeaderName }}</h3>
+                <h3 class="card__title">{{ party.title }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
             </div>
-            <p class="card__description">{{party.partyLeaderName}}</p>
+            <p class="card__description">{{party.description}}</p>
           </div>
         </router-link>
       </li>
@@ -58,7 +58,7 @@ export default{
         return {
             myParties: [],
             theirParties: [],
-            imgURL: 'https://cdn-icons-png.flaticon.com/512/1161/1161670.png'
+            imgURL: 'https://i.imgur.com/oYiTqum.jpg'
         }
     },
     methods:{
@@ -109,7 +109,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --surface-color: #fff;
   --curve: 40;
@@ -123,6 +123,7 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   background-color: #fef8f8;
 }
+
 
 .cards {
   display: grid;
@@ -154,7 +155,7 @@ body {
   right: 0;
   z-index: 1;      
   border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);      
+  background-color: rgba(255,255,255,0.8);      
   transform: translateY(100%);
   transition: .2s ease-in-out;
 }
@@ -169,8 +170,8 @@ body {
   align-items: center;
   gap: 2em;
   padding: 2em;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
-  background-color: var(--surface-color);
+  /* border-radius: calc(var(--curve) * 1px) 0 0 0;     */
+  background-color: rgba(255,255,255, 0.6);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
 }
@@ -222,7 +223,7 @@ body {
 .card__description {
   padding: 0 2em 2em;
   margin: 0;
-  color: #D7BDCA;
+  color: black;
   font-family: "MockFlowFont";   
   display: -webkit-box;
   -webkit-box-orient: vertical;

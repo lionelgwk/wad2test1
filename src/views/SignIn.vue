@@ -8,7 +8,6 @@
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p v-if="errMsg">{{ errMsg }}</p>
             <p><button @click="signIn" class="button">Let's Party!</button></p>
-            <p>OR</p> 
             <p><button @click="signInWithGoogle" class="button google">Login with Google</button></p>
             <router-link :to="{ name: 'registeraccount'}" class="text-danger">Don't have an account?</router-link>
         </div>
@@ -74,6 +73,7 @@
   </script>
 
 <style scoped>
+
 input {
     border-radius: 10px;
     width:300px;
@@ -131,7 +131,7 @@ a {
     height:fit-content;
     border-radius: 10px;
     padding:20px;
-    position: absolute;
+    position: relative;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);

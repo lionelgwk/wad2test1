@@ -66,7 +66,7 @@
 
     </script>    
 
-  <style>
+  <style scoped>
     h1 {
       font-family: 'Varela Round', sans-serif;
     }
