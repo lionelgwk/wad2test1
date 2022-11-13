@@ -1,7 +1,7 @@
 <template>
     <div class="ui grid">
         <div class="fifteen wide column">
-            <h1>Your Friends</h1>
+            <h2>Select your friends:</h2>
             <div class="ui segment" style="max-height: 500px; overflow:scroll">
                 <div class="ui divided items" v-if="friends.length > 0">
                     <div class="item" v-for="friend in friends" :key="friend">
