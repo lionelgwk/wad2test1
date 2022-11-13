@@ -1,18 +1,32 @@
 <template>
-    <h1>Event Details Page</h1>
-    <p>{{title}}</p>
-    <p>Organised by {{partyLeaderName}}</p>
-    <ul>
-        <li v-for="activity in activities" :key="activity.id">
-            <p>{{activity.name}}</p>
-            <p>{{activity.vicinity}}</p>
-        </li>
-    </ul>
-    <p>Going with:</p>
-    <ul>
-        <li v-for="friend in friends" :key="friend.id">{{friend.name}}</li>
-    </ul>
-    <p>{{date}}</p>
+    <h1>Event Details</h1>
+
+    <div class="card">
+        <h2>{{title}}</h2>
+        <h5>Organised by {{partyLeaderName}}</h5>
+        <h3>Places Headed To:</h3>
+        <div class="list">
+        <ul>
+            <li v-for="activity in activities" :key="activity.id">
+                <h5>{{activity.name}}</h5>
+                <p>{{activity.vicinity}}</p>
+            </li>
+        </ul>
+        </div>
+        <div class ="row">
+        <div class="col">
+        <h3>Going With:</h3>
+        <ul>
+            <h5><li v-for="friend in friends" :key="friend.id">{{friend.name}}</li></h5>
+        </ul>
+        </div>
+        <div class="col">
+        <h3>Date:</h3>
+        <h5>{{date}}</h5>
+        </div>
+        </div>
+
+        </div>
 </template>
 
 <script>
@@ -47,5 +61,39 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.card{
+    border-color: crimson;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 15px 15px 15px black;
+    font-family: 'Varela Round', sans-serif;
+    margin-inline:auto;
+    margin-bottom: 2%;
+    align-content: center;
+    width: 30rem;
+}
+ h1{
+    font-family: 'Varela Round', sans-serif;
+    padding-top: 2%;
+    font-weight: bold;
+    margin-inline: auto;
+ }
+ h2{
+    padding-top: 2%;
+ }
+ h3{
+    color:crimson
+ }
+ h5{
+    font-weight:bold;
+ }
+ li{
+    list-style:none;
+    padding-right:32px;
+ }
+.inline{
+    display: inline-block;
+}
+
 </style>
