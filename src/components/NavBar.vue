@@ -94,7 +94,7 @@ function handleSignOut() {
     signOut(auth)
         .then(() => {
             console.log("Successfully signed out!");
-            router.push("/");
+            router.push("/homelogin");
         })
         .catch((error) => {
             console.log(error.code);
