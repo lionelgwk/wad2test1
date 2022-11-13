@@ -97,7 +97,7 @@
   <div id="largefiller"></div>
 
   <div v-if="nullField">
-    <button  class="button" @click="invalidSubmit()">Create Party</button>
+    <button  class="button" id="create" @click="invalidSubmit()">Create Party</button>
   </div>
   <div v-else>
     <router-link :to="{ name: 'createsuccess'}" class="text-light"><button class="button" id="create" @click="submit">Create Party</button></router-link>
@@ -142,7 +142,7 @@
     },
     computed:{
       nullField(){
-        if (this.title == '' || this.description == '' || this.activities == '' || this.date == '' || this.partyLeader == '' || this.address == '' || this.friends == ''){
+        if (this.title == '' || this.description == '' || this.activities == '' || this.date == '' || this.selectedFriends == ''){
           return true;
         } else {
           return false;
