@@ -8,9 +8,9 @@
             </div>
         </div>
     </transition>
-
-    <div class="ui grid">
-        <div class="six wide column">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <form class="ui segment large form">
                 <div class="field">
                     <div class="ui right icon input large">
@@ -72,9 +72,10 @@
             </div>
 
         </div>
-        <div class="ten wide column segment ui" ref="map">
+        <div class="col-lg-8 col-md-6 col-sm-12" ref="map">
         </div>
     </div>
+</div>
 </template>
 
 <script> 

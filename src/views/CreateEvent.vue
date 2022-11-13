@@ -1,83 +1,90 @@
 <template>
 
+<div class="bg">
   <div id="largefiller"></div>
   
-  <input type="text" placeholder="Enter Your Party Name" class="text-align-center" v-model="title">
+  <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title"><br><br>
+  <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
 
-  <h2>Select your party activites:</h2>
-  <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
+  <div id="filler"></div>
+  <div id="filler"></div>
 
-  <h2>Select your party date:</h2>
-  <input type="date" v-model="date">
-
+  <div class="container">
   <div class="row">
-    <div class="col">
-      <div class="ui grid">
-        <div class="six wide column">
-          <h1>Who's In?</h1>
-          <div class="ui segment">
-            <div class="ui divided items" v-if="selectedFriends.length == 0">
-              <div class="item">
-                <div class="content">
-                  <h2>Looking lonely... Get your mates in!</h2>
+    <div class="col-lg-8 col-sm-12">
+    <div class="section">
+      <h2>Select your party activites:</h2>
+      <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <div class="section">
+        <h1>Activities</h1>
+        <div class="ui segment" style="max-height: 500px; overflow:scroll">
+          <div class="ui divided items" v-if="activities.length == 0">
+            <div class="item">
+              <div class="content">
+                <div class="header">
+                  <p>It's looking boring... Add an activity!</p>
                 </div>
               </div>
             </div>
-            <div class="ui divided items" v-if="selectedFriends.length > 0">
-              <div class="item" v-for="friend in selectedFriends" :key="friend">
-                <div class="content">
-                  <h2>{{friend.name}}</h2>
-                  <button class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
-                </div>
+            </div>
+          <div class="ui divided items" v-if="activities.length > 0">
+            <div class="item" v-for="place in activities" :key="place.id">
+              <div class="content">
+                <div class="header">{{place.name}}</div>
+                <div class="meta">{{place.vicinity}}</div>
+                <button class="ui button red" @click="removePlace(place)">Remove Activity</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
     </div>
+</div>
+</div>
 
-    <div class="col">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-12">
+    <div class="section">
       <AddFriends @add-friend="addFriend"></AddFriends>
     </div>
-
-  </div>
-  
-  <div id="filler"></div>
-
-
-  <div id="filler"></div>
-
-
-  <div class="ui grid">
-    <div class="six wide column">
-      <h1>Activities</h1>
-      <div class="ui segment" style="max-height: 500px; overflow:scroll">
-        <div class="ui divided items" v-if="activities.length == 0">
-          <div class="item">
-            <div class="content">
-              <div class="header">
-                <p>It's looking boring... Add an activity!</p>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <div class="section">
+        <h1>Who's In?</h1>
+        <div class="ui segment">
+          <div class="ui divided items" v-if="selectedFriends.length == 0">
+            <div class="item">
+              <div class="content">
+                <h2>Looking lonely... Get your mates in!</h2>
               </div>
             </div>
           </div>
-          </div>
-        <div class="ui divided items" v-if="activities.length > 0">
-          <div class="item" v-for="place in activities" :key="place.id">
-            <div class="content">
-              <div class="header">{{place.name}}</div>
-              <div class="meta">{{place.vicinity}}</div>
-              <button class="ui button red" @click="removePlace(place)">Add Activity</button>
+          <div class="ui divided items" v-if="selectedFriends.length > 0">
+            <div class="item" v-for="friend in selectedFriends" :key="friend">
+              <div class="content">
+                <h3>{{friend.name}}</h3>
+                <button class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
     </div>
+</div>
+</div>
+
+<div id="largefiller"></div>
+<button class="button" @click="submit">Create Party</button>
+<div id="largefiller"></div>
+<div id="largefiller"></div>
+<div id="largefiller"></div>
+
+
   </div>
-
-  <div id="filler"></div>
-  <button class="button" @click="submit">Create Party</button>
-
-
 
 </template>
 
@@ -168,23 +175,42 @@ export default {
 
 <style>
 
-#largefiller {
-  height: 60px;
+.container {
+  margin:0
+}
+.bg {
+  background-color: rgb(255,250,247);
 }
 
+#largefiller {
+  height: 40px;
+}
 
 #filler {
   height: 20px;
 }
 
-input[type="date"] {
+.section {
+  background-color: white;
+  padding:20px;
   border-radius: 10px;
+  box-shadow: 0 0 5pt 2pt #D3D3D3;
+}
+
+#partydate {
   padding:10px;
   font-family: 'Varela Round', sans-serif;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  font-family: 'Varela Round', sans-serif;
+  font-size:20px;
+  text-align: center;
 }
 
 
-input[type="text"] {
+#partyname  {
   border: 0;
   outline: 0;
   background: transparent;
@@ -196,11 +222,18 @@ input[type="text"] {
 
 
 .button {
-  background-color: crimson;
-  font-family: 'Varela Round', sans-serif;
-  color:white;
-  border-radius:10px;
-  margin-left:10px
+    background-color: crimson;
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+    border: none;
+    padding:5px 10px 5px 10px;
+    font-size: 20px;
+    margin-bottom:0px;
+    border-radius:10px
+}
+
+button:hover {
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
 }
 
 select {
@@ -231,6 +264,5 @@ select {
   max-width: 400px;
   margin: 0 auto;
 }
-
 
 </style>
