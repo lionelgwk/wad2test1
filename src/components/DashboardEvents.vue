@@ -3,6 +3,7 @@
 <div>
     
       <br>
+    <div class="container" id="bg">
     <div class="box"><h1>Parties Created</h1>
     </div>
     <div class="container fluid">
@@ -31,7 +32,6 @@
 </div>
 
 
-<div>
   <div class="box"><h1>Parties Joined</h1> </div>
   <div class="container-fluid">
     <ul class="cards">
@@ -72,7 +72,8 @@ export default{
         return {
             myParties: [],
             theirParties: [],
-            imgURL: 'https://cdn-icons-png.flaticon.com/512/1161/1161670.png'
+            imgURL: 'https://media.istockphoto.com/photos/festival-event-party-with-hipster-people-blurred-background-picture-id613897214?b=1&k=20&m=613897214&s=170667a&w=0&h=-kMh6hhUXyGXn9sRXXj_Nc4aqalA3jCoqFUGsg3AG2I='
+            
         }
     },
     methods:{
@@ -154,7 +155,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
-  max-width: 360px;
+  max-width: 340px;
 }
 
 .card__image {      
@@ -248,15 +249,27 @@ body {
   overflow: hidden;
 }    
 
-.box{
-  background-color: crimson;
-  border:2px;
+/* .box{ */
+  /* background-color: crimson; */
+  /* border:2px;
   border-style: solid;
-  color:white;
+  border-color:black;
   margin:auto;
   width:fit-content;
   border-radius: 20px;
   padding:5px;
-}
+} */
 
+/* #bg{ */
+  /* background-image: url("../assets/pic1x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  
+  /* border:2px;
+  border-style:solid;
+  border-color:crimson;
+  border-radius: 20px;
+  padding-top: 10px;
+  height:90%;
+} */
 </style>
