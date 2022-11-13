@@ -15,7 +15,7 @@
                   <span class="card__status">{{ party.date }}</span>
                 </div>
           
-              <p class="card__description">{{party.partyLeaderName}}</p>
+              <p class="card__description">{{party.description}}</p>
             </div>
           </router-link>
         </div>
