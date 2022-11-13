@@ -3,7 +3,7 @@
 <div>
     <div class="container-fluid">
       <br>
-    <h1>Parties You Created</h1>
+    <h1>Parties Created</h1>
     <ul class="cards">
       <li v-for="party in myParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
@@ -17,16 +17,19 @@
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
-            
+        
             <!-- <p class="card__description">{{party.partyLeaderName}}</p> -->
           </div>
         </router-link>
       </li>
-    </ul>
+    <li v-if="!myParties.length">
+      <p> You have yet to create any parties! Click <router-link :to="{ name: 'createevent'}" class="text-danger">here</router-link> to start one!</p>
+    </li>
+</ul>
 </div>
 
 <div>
-    <h1>Parties You Joined</h1>
+    <h1>Parties Joined</h1>
     <ul class="cards">
       <li v-for="party in theirParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
@@ -42,6 +45,9 @@
             <p class="card__description">{{party.partyLeaderName}}</p>
           </div>
         </router-link>
+      </li>
+      <li v-if="!theirParties.length">
+        <p> You have not joined any parties! Why not start one?</p>
       </li>
     </ul>
 </div>
@@ -140,7 +146,7 @@ body {
   position: relative;
   display: block;
   height: 100%;  
-  border-radius: calc(var(--curve) * 1px);
+  border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
 }
