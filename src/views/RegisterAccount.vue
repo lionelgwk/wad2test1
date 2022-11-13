@@ -8,6 +8,7 @@
             <p><input type="text" placeholder="Email" v-model="email"/></p>
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p><button @click="register" class="button">Register</button></p>
+            <p>OR</p>
             <p><button @click="signInWithGoogle" class="button google">Register With Google</button></p>
         </div>
   </div>
@@ -87,7 +88,8 @@ input {
     border: none;
     padding:5px 10px 5px 10px;
     font-size: 15px;
-    margin-bottom:0px
+    margin-bottom:0px;
+    border-radius: 10px;
 }
 
 .google {
