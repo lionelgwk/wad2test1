@@ -48,7 +48,7 @@ export default {
             partyLeaderName: '',
             title: '',
             description: '',
-            time: ''
+            time: '',
         }
     },
     async mounted(){
