@@ -29,7 +29,8 @@ export default {
             friends: [],
             partyLeader: '',
             partyLeaderName: '',
-            title: ''
+            title: '',
+            description: ''
         }
     },
     async mounted(){
@@ -43,6 +44,7 @@ export default {
         this.partyLeader = collection.partyLeader;
         this.partyLeaderName = collection.partyLeaderName;
         this.title = collection.title;
+        this.description = collection.description;
     }
 }
 </script>
