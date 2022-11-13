@@ -4,7 +4,8 @@
     <div class="container-fluid d-flex justify-content-center">
     <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title">
   </div>
-<div class="container-fluid d-flex justify-content-center">
+  <div class="container-fluid d-flex justify-content-center">
+    <input type="text" placeholder="Party description" class="text-align-center" id="partydesc" v-model="description">
     <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
   </div>
     <div id="filler"></div>
@@ -15,13 +16,15 @@
       <div class="col-lg-8 col-sm-12">
       <div class="section">
         <h2>Select your party activites:</h2>
+        <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
         <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
+        </div>
       </div>
       </div>
       <div class="col-lg-4 col-md-12">
         <div class="section">
           <h2>Selected activities:</h2>
-          <div class="ui segment" style="max-height: 50vh; overflow: scroll;">
+          <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
             <div class="ui divided items" v-if="activities.length == 0">
               <div class="item">
                 <div class="content">
@@ -51,13 +54,16 @@
     <div class="row">
       <div class="col-lg-8 col-sm-12">
       <div class="section">
+        <h2>Add your friends:</h2>
+        <div class="ui segment" style="max-height: 40vh; overflow: scroll">
         <AddFriends @add-friend="addFriend"></AddFriends>
+        </div>
       </div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <div class="section">
+        <div class="section" style="height: 50vh">
           <h2>Who's in?</h2>
-          <div class="ui segment">
+          <div class="ui segment" style="max-height: 40vh; overflow: scroll">
             <div class="ui divided items" v-if="selectedFriends.length == 0">
               <div class="item">
                 <div class="content">
@@ -69,7 +75,7 @@
               <div class="item" v-for="friend in selectedFriends" :key="friend">
                 <div class="content">
                   <h3>{{friend.name}}</h3>
-                  <button class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
+                  <button class="btn btn-danger" @click="removeFriend(friend)">Remove Friend</button>
                 </div>
               </div>
             </div>
@@ -103,6 +109,7 @@
     data() {
       return  {
         title: '',
+        description: '',
         activities: [],
         date: null,
         partyLeader: '',
@@ -150,6 +157,7 @@
         console.log(user.email);
         const party = {
           title: this.title,
+          description: this.description,
           activities: this.activities,
           date: this.date,
           partyLeader: user.email,
@@ -163,6 +171,7 @@
           })
         
           console.log(this.title);
+          console.log(this.description);
           console.log(this.activities);
           console.log(this.date);
           console.log(this.partyLeader);
@@ -176,16 +185,12 @@
   
   </script>
   
-  <style>
+  <style scoped>
   
   h2, h3 {
     font-family: 'Varela Round', sans-serif;
   }
   
-  .container {
-    margin:0;
-    font-family: 'Varela Round', sans-serif;
-  }
   .bg {
     background-color: rgb(255,250,247);
   }
@@ -207,7 +212,24 @@
   }
   
   #partydate {
-    padding:10px;
+    padding-top:10px;
+    padding-bottom:0px;
+    font-family: 'Varela Round', sans-serif;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    font-family: 'Varela Round', sans-serif;
+    font-size:20px;
+    text-align: center;
+  }
+
+
+  #partydesc {
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-right:10px;
     font-family: 'Varela Round', sans-serif;
     border: 0;
     outline: 0;
@@ -228,8 +250,31 @@
     font-size:40px;
     text-align: center;
   }
+
+  #partydesc2 {
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-right:10px;
+    font-family: 'Varela Round', sans-serif;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: 'Varela Round', sans-serif;
+    font-size:20px;
+    text-align: center;
+  }
   
   
+  #partyname2  {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: 'Varela Round', sans-serif;
+    font-size:40px;
+    text-align: center;
+  }
+    
   .button {
       background-color: crimson;
       color:white;

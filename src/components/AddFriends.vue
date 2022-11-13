@@ -1,7 +1,6 @@
 <template>
     <div class="ui grid">
-        <div class="fifteen wide column">
-            <h2>Select your friends:</h2>
+        <div class="col">
             <div class="ui segment" style="max-height: 500px; overflow:scroll">
                 <div class="ui divided items" v-if="friends.length > 0">
                     <div class="item" v-for="friend in friends" :key="friend">
@@ -56,4 +55,22 @@ export default{
 }
 </script>
 
-<style></style>
+<style scoped>
+
+.content {
+    font-family: 'Varela Round', sans-serif;
+}
+.header {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.button {
+    background-color: rgb(28, 137, 220);
+    color:white;
+    font-family: 'Varela Round', sans-serif;
+    border: none;
+    padding:5px 10px 5px 10px;
+    font-size: 15px;
+    margin-bottom:0px
+}
+</style>
