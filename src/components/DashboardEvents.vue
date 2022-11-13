@@ -1,5 +1,7 @@
 <template>
-  <br>
+  <div class="bg">
+    <div class="filler"></div>
+
   <div>
       <h1>Parties You Created</h1>
       <div v-if="myParties.length > 0" class="cards d-flex row justify-content-center">
@@ -44,8 +46,12 @@
       </div>
       <p v-if="theirParties.length == 0">You have not joined any parties! Why not be the one to <router-link :to="{ name: 'createevent'}" class="text-danger">invite your friends?</router-link></p>
   </div>
+  <div class="filler"></div>
+  <div class="filler"></div>
+  <div class="filler"></div>
+
   
-  
+</div>
   
   </template>
   
@@ -119,12 +125,15 @@
   
   * {
     box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
   }
   
+  .bg {
+    background-color: rgb(255,250,247);
+  }
+
   body {
     font-family: 'Varela Round', sans-serif;
-    background-color: #fef8f8;
-    
   }
   
   .cards {
@@ -139,7 +148,7 @@
   position: relative;
   display: block;
   height: 100%;  
-  border-radius: calc(var(--curve) * 1px);
+  border-radius: 5px;
   overflow: hidden;
   text-decoration: none;
   max-width: 340px;
@@ -156,7 +165,7 @@
   left: 0;
   right: 0;
   z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
+  border-radius: 5px;    
   background-color: var(--surface-color);      
   transform: translateY(100%);
   transition: .2s ease-in-out;
@@ -172,7 +181,7 @@
   align-items: center;
   gap: 2em;
   padding: 10%;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  border-radius: 5px;    
   background-color: var(--surface-color);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
@@ -195,14 +204,14 @@
 }       
 
 .card:hover .card__header {
-  transform: translateY(0);
+  transform: translateY(4);
 }
 
 .card__thumb {
   flex-shrink: 0;
   width: 50px;
   height: 50px;      
-  border-radius: 50%;      
+  border-radius: 5px;      
 }
 
 .card__title {
