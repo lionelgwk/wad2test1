@@ -8,7 +8,6 @@
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p v-if="errMsg">{{ errMsg }}</p>
             <p><button @click="signIn" class="button">Let's Party!</button></p>
-            <p>OR</p> 
             <p><button @click="signInWithGoogle" class="button google">Login with Google</button></p>
             <router-link :to="{ name: 'registeraccount'}" class="text-danger">Don't have an account?</router-link>
         </div>
