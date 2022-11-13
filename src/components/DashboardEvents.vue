@@ -1,9 +1,11 @@
 <template>
 
 <div>
-    <div class="container-fluid">
+    
       <br>
-    <h1>Parties Created</h1>
+    <div class="box"><h1>Parties Created</h1>
+    </div>
+    <div class="container fluid">
     <ul class="cards">
       <li v-for="party in myParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
@@ -28,8 +30,10 @@
 </ul>
 </div>
 
+
 <div>
-    <h1>Parties Joined</h1>
+  <div class="box"><h1>Parties Joined</h1> </div>
+  <div class="container-fluid">
     <ul class="cards">
       <li v-for="party in theirParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
@@ -50,6 +54,7 @@
         <p> You have not joined any parties! Why not start one?</p>
       </li>
     </ul>
+</div>
 </div>
 </div>
 
@@ -149,6 +154,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
+  max-width: 360px;
 }
 
 .card__image {      
@@ -241,4 +247,16 @@ body {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }    
+
+.box{
+  background-color: crimson;
+  border:2px;
+  border-style: solid;
+  color:white;
+  margin:auto;
+  width:fit-content;
+  border-radius: 20px;
+  padding:5px;
+}
+
 </style>
