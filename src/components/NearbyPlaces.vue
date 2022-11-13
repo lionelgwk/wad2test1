@@ -14,9 +14,8 @@
             <form class="ui segment large form">
                 <div class="field">
                     <div class="ui right icon input large">
-                        <input type="text" id="coords" ref="latLngRef" placeholder="Search for a place" v-model="coords" @change="findNearby">
-                        <input type="text" ref="addRef" @change="$emit('update:add', $event.target.value)" :value="add" placeholder="Enter a place">
-                        <i class="search link icon" @click="findNearby"></i>
+                        <input type="text" id="placeEnter" placeholder="Enter a place" ref="add" autocomplete="on"/>
+                        <i class="search icon" @click="findNearby"></i>
                     </div>
                 </div>
 
@@ -26,18 +25,32 @@
                             <select v-model="type">
                                 <option value="restaurant" selected>Restaurants</option>
                                 <option value="bar">Bars</option>
-                                <option value="activities">Activities</option>
+                                <option value="cafe">Cafes</option>
+                                <option value="bowling_alley">Bowling</option>
+                                <option value="bicycle_store">Cycling</option>
+                                <option value="campground">Camping</option>
+                                <option value="clothing_store">Clothes Shopping</option>
+                                <option value="shoe_store">Shoe Shopping</option>
+                                <option value="jewelry_store">Jewelry Shopping</option>
+                                <option value="museum">Museums</option>
+                                <option value="movie_theater">Movies</option>
+                                <option value="casino">Casinos</option>
+                                <option value="park">Parks</option>
+                                <option value="night_club">Night Clubs</option>
+                                <option value="tourist_attraction">Sightseeing</option>
+                                <option value="spa">Spas</option>
+                                <option value="gym">Workout</option>
                             </select>
                         </div>
 
 
                         <div class="field">
                             <select v-model="radius">
-                                <option value="1" selected>1 KM</option>
-                                <option value="2">2 KM</option>
-                                <option value="3">3 KM</option>
-                                <option value="4">4 KM</option>
-                                <option value="5">5 KM</option>
+                                <option value="0.2" selected>200M</option>
+                                <option value="0.4">400M</option>
+                                <option value="0.6">600M</option>
+                                <option value="0.8">800M</option>
+                                <option value="1">1 KM</option>
                             </select>
                         </div>
                     </div>
@@ -52,6 +65,7 @@
                         <div class="content">
                             <div class="header">{{place.name}}</div>
                             <div class="meta">{{place.vicinity}}</div>
+                            <button class="ui button blue" @click="addPlace(place)">Add Activity</button>
                         </div>
                     </div>
                 </div>
@@ -65,65 +79,59 @@
 
 <script> 
 import axios from 'axios';
-import { ref } from 'vue';
+
 // import PlaceAutocomplete from './PlaceAutocomplete.vue';
-import { onMounted } from 'vue';
+
 
 
 
 /* eslint-disable */
 export default {
-    setup() {
+    mounted() {
+        this.findLocations();
 
-        const showToast = ref(true);
-        const hideToast = () => {
-            showToast.value = false;
-        };
+        const autocomplete = new google.maps.places.Autocomplete(this.$refs["add"],
+        {
+            bounds: new google.maps.LatLngBounds(
+                new google.maps.LatLng(1.3521, 103.8198)
+            ),
+            componentRestrictions: { country: "sg" },
+            type: ["address", "establishment", "point_of_interest", "food"],
+        });
 
-
-        const addRef = ref();
         
-
-        onMounted(() => {
-            const autoComplete = new google.maps.places.Autocomplete(addRef.value, {
-                types: ['address'],
-                fields: ['address_components', 'geometry']
-            });
-
-            autoComplete.addListener('place_changed', () => {
-                const place = autoComplete.getPlace();
-                const lat = place.geometry.location.lat();
-                const lng = place.geometry.location.lng();
-                document.getElementById('coords').value = `${lat}, ${lng}`;
-            });
-
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            const lat = place.geometry.location.lat();
+            const lng = place.geometry.location.lng();
+            this.lat = lat;
+            this.lng = lng;
             
-
-
-        })
-
-        
-        return { showToast, hideToast, addRef };
+        });
     },
     data() {
         return {
             type: "restaurant",
-            radius: "1",
+            radius: "0.2",
             lat: 0,
             lng: 0,
             places: [],
             mapDisplay: false,
             search: "",
-            add: "",
-            coords: ""
+            showToast: true,
         };
     },
+    emits: ["add-place"],
     computed: {
         coordinates() {
             return `${this.lat}, ${this.lng}`;
         }
     },
     methods: {
+        addPlace(place){
+            this.$emit('add-place', place);
+            console.log(place);
+        },
         findLocations() {
             navigator.geolocation.getCurrentPosition(position => {
                 this.lat = position.coords.latitude;
@@ -133,12 +141,13 @@ export default {
             });
         },
         findNearby() {
-            const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.lat},${this.lng}&type=${this.type}&radius=${this.radius * 1000}&key=AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4`;
+            const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${this.lat},${this.lng}&type=${this.type}&radius=${this.radius * 1000}&key=AIzaSyCTHZllCldMYoM9ByF8AcxKPWvIuFJsTx4`;
             this.showToast = true;
             axios.get(URL)
                 .then(response => {
                 this.places = response.data.results;
                 this.addLocationsToGoogleMaps();
+                
             })
                 .catch(error => {
                 console.log(error.message);
@@ -150,6 +159,7 @@ export default {
                 center: new google.maps.LatLng(this.lat, this.lng),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
             this.mapDisplay = true;
             
             
@@ -171,19 +181,24 @@ export default {
             
         }
     },
-    mounted() {
-        this.findLocations();
-    },
     watch:{
-        coords(){
-            this.lat = this.coords.split(",")[0];
-            this.lng = this.coords.split(",")[1];
-        },
         coordinates() {
             this.findNearby();
         },
+        type() {
+            this.findNearby();
+        },
+        radius() {
+            this.findNearby();
+        },
+        lat() {
+            this.findNearby();
+        },
+        lng() {
+            this.findNearby();
+        },
         mapDisplay() {
-            this.hideToast();
+            this.showToast = false;
             this.mapDisplay = false;
         } 
     },
@@ -234,4 +249,5 @@ export default {
     .toastmotion-leave-active {
         transition: all 0.3s ease;
     }
+
 </style>
