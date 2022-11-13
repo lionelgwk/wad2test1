@@ -25,7 +25,7 @@ export default {
   }
   </script>
 
-<style>
+<style scoped>
 .modal-content {
   font-family: 'Varela Round', sans-serif;
 }

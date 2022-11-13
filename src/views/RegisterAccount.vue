@@ -7,7 +7,6 @@
             <p><input type="text" placeholder="Email" v-model="email"/></p>
             <p><input type="password" placeholder="Password" v-model="password"/></p>
             <p><button @click="register" class="button">Register</button></p>
-            <p>OR</p> 
             <p><button @click="signInWithGoogle" class="button google">Register With Google</button></p>
         </div>
   </div>

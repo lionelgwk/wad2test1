@@ -9,7 +9,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
   .toast-wrapper {
     position: fixed;
     width: 100%;
