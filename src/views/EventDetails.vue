@@ -1,5 +1,7 @@
 <template>
-    <h1>Event Details</h1>
+    <div class="bg">
+        <div class="filler"></div>
+    <h3 class="text-decoration-underline">Event Details</h3>
 
     <div class="card" data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <h2>{{title}}</h2>
@@ -30,6 +32,13 @@
         </div>
 
         </div>
+
+        <div class="filler"></div>
+        <div class="filler"></div>
+        <div class="filler"></div>
+
+    </div>
+
 </template>
 
 <script>

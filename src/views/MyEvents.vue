@@ -32,6 +32,8 @@ export default {
 
 html{
   overflow-y: scroll;
+  font-family: 'Varela Round', sans-serif;
+
 }
 </style>
 
