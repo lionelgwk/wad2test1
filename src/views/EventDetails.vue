@@ -80,7 +80,7 @@ export default {
     align-content: center;
     width: 30rem;
 }
- h1{
+h1{
     font-family: 'Varela Round', sans-serif;
     padding-top: 2%;
     font-weight: bold;
