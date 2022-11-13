@@ -75,7 +75,8 @@
   </div>
 
   <div id="filler"></div>
-  <button class="button" @click="submit">Create Party</button>
+  <button class="button" @click="submit"><router-link :to="{ name: 'createsuccess'}">Create Party</router-link></button>
+  
 
 
 

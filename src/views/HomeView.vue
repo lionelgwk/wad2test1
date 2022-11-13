@@ -16,7 +16,9 @@
  
 
   <link id="pagestyle" href="../assets/css/material-kit.css?v=3.0.4" rel="stylesheet" />
-
+  <ResponsiveContainer
+      default-breakpoint="tiny"
+      :breakpoints="{small: 576, medium: 768, large: 992, xlarge:1200 }">
   
   <header class="header-2">
     <div class="page-header min-vh-100"
@@ -34,7 +36,7 @@
     </div>
   </header>
 
-
+  </ResponsiveContainer>
   
 </template>
 
