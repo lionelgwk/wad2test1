@@ -1,13 +1,22 @@
 <template>
   <div class="bg" id="screen">
     <div id="largefiller"></div>
+
     <div class="container-fluid d-flex justify-content-center">
     <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title">
   </div>
-  <div class="container-fluid d-flex justify-content-center">
-    <input type="text" placeholder="Party description" class="text-align-center" id="partydesc" v-model="description">
-    <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
+
+  <div class="row container-fluid d-flex justify-content-center">
+    <div class="col-lg-3 col-md-0"></div>
+    <div class="col">
+       <input type="text" placeholder="Party description" class="text-align-center" id="partydesc" v-model="description">
+    </div>
+    <div class="col">
+      <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
+    </div>
+    <div class="col-lg-3 col-md-0"></div>
   </div>
+
     <div id="filler"></div>
     <div id="filler"></div>
   
@@ -213,7 +222,9 @@
   
   #partydate {
     padding-top:10px;
-    padding-bottom:0px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-right:10px;
     font-family: 'Varela Round', sans-serif;
     border: 0;
     outline: 0;
@@ -246,30 +257,6 @@
     outline: 0;
     background: transparent;
     border-bottom: 1px solid black;
-    font-family: 'Varela Round', sans-serif;
-    font-size:40px;
-    text-align: center;
-  }
-
-  #partydesc2 {
-    padding-top:10px;
-    padding-bottom:10px;
-    margin-top:10px;
-    margin-right:10px;
-    font-family: 'Varela Round', sans-serif;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    font-family: 'Varela Round', sans-serif;
-    font-size:20px;
-    text-align: center;
-  }
-  
-  
-  #partyname2  {
-    border: 0;
-    outline: 0;
-    background: transparent;
     font-family: 'Varela Round', sans-serif;
     font-size:40px;
     text-align: center;
