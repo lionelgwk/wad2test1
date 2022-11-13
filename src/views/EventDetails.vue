@@ -3,30 +3,30 @@
 
     <div class="card">
         <h2>{{title}}</h2>
+        <h4>{{description}}</h4>
         <h5>Organised by {{partyLeaderName}}</h5>
         <h3>Places Headed To:</h3>
         <div class="list">
-        <ul>
-            <li v-for="activity in activities" :key="activity.id">
-                <h5>{{activity.name}}</h5>
-                <p>{{activity.vicinity}}</p>
-            </li>
-        </ul>
+            <ul>
+                <li v-for="activity in activities" :key="activity.id">
+                    <h5>{{activity.name}}</h5>
+                    <p>{{activity.vicinity}}</p>
+                </li>
+            </ul>
         </div>
         <div class ="row">
-        <div class="col">
-        <h3>Going With:</h3>
-        <ul>
-            <h5><li v-for="friend in friends" :key="friend.id">{{friend.name}}</li></h5>
-        </ul>
+            <div class="col">
+                <h3>Going With:</h3>
+                <ul>
+                    <h5><li v-for="friend in friends" :key="friend.id">{{friend.name}}</li></h5>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Date:</h3>
+                <h5>{{date}}</h5>
+            </div>
         </div>
-        <div class="col">
-        <h3>Date:</h3>
-        <h5>{{date}}</h5>
-        </div>
-        </div>
-
-        </div>
+    </div>
 </template>
 
 <script>
@@ -43,7 +43,8 @@ export default {
             friends: [],
             partyLeader: '',
             partyLeaderName: '',
-            title: ''
+            title: '',
+            description: ''
         }
     },
     async mounted(){
@@ -57,6 +58,7 @@ export default {
         this.partyLeader = collection.partyLeader;
         this.partyLeaderName = collection.partyLeaderName;
         this.title = collection.title;
+        this.description = collection.description;
     }
 }
 </script>
