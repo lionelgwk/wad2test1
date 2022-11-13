@@ -8,8 +8,7 @@
                         <div class="content">
                             <div class="header">{{friend.name}}</div>
                             <br>
-                            <button v-if="!selectedFriends.includes(friend)" class="ui button blue" @click="addFriend(friend)">Add Friend</button>
-                            <button disabled v-if="selectedFriends.includes(friend)" class="ui button blue" @click="addFriend(friend)">Add Friend</button>
+                            <button :id="friend.email" class="ui button blue" @click="addFriend(friend)">Add Friend</button>
                         </div>
                     </div>
                 </div>
@@ -37,6 +36,7 @@ export default{
         addFriend(friend){
             this.$emit('add-friend', friend);
             this.selectedFriends.push(friend);
+            document.getElementById(friend.email).disabled = true;
         }
     },
     mounted(){

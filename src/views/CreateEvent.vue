@@ -27,7 +27,7 @@
               <div class="item" v-for="friend in selectedFriends" :key="friend">
                 <div class="content">
                   <h2>{{friend.name}}</h2>
-                  <button class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
+                  <button  class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
                 </div>
               </div>
             </div>
@@ -134,6 +134,7 @@ export default {
     },
     removeFriend(friend){
       this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      document.getElementById(friend.email).disabled = false;
     },
     submit(){
       const auth = getAuth();
