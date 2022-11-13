@@ -60,13 +60,19 @@ const routes = [
   {
     path: '/createsuccess',
     name: 'createsuccess',
-    component: CreateSuccess
+    component: CreateSuccess,
+    meta: {
+      requiresAuth: true,
+    }
   },
   {
     path: '/myevents/:id',
     name: 'eventdetails',
     component: EventDetails,
-    props: true
+    props: true,
+    meta: {
+      requiresAuth: true,
+    }
   },
   {
     path: '/:catchAll(.*)',
