@@ -1,11 +1,22 @@
 <template>
-
   <div class="bg" id="screen">
     <div id="largefiller"></div>
-    
-    <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title"><br><br>
-    <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
-  
+
+    <div class="container-fluid d-flex justify-content-center">
+    <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title">
+  </div>
+
+  <div class="row container-fluid d-flex justify-content-center">
+    <div class="col-lg-3 col-md-0"></div>
+    <div class="col">
+       <input type="text" placeholder="Party description" class="text-align-center" id="partydesc" v-model="description">
+    </div>
+    <div class="col">
+      <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
+    </div>
+    <div class="col-lg-3 col-md-0"></div>
+  </div>
+
     <div id="filler"></div>
     <div id="filler"></div>
   
@@ -14,13 +25,15 @@
       <div class="col-lg-8 col-sm-12">
       <div class="section">
         <h2>Select your party activites:</h2>
+        <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
         <NearbyPlaces @add-place="addActivity"></NearbyPlaces>
+        </div>
       </div>
       </div>
       <div class="col-lg-4 col-md-12">
         <div class="section">
           <h2>Selected activities:</h2>
-          <div class="ui segment" style="max-height: 500px; overflow:scroll">
+          <div class="ui segment" style="height: 30vh; max-height: 50vh; overflow: scroll;">
             <div class="ui divided items" v-if="activities.length == 0">
               <div class="item">
                 <div class="content">
@@ -50,13 +63,16 @@
     <div class="row">
       <div class="col-lg-8 col-sm-12">
       <div class="section">
+        <h2>Add your friends:</h2>
+        <div class="ui segment" style="max-height: 40vh; overflow: scroll">
         <AddFriends @add-friend="addFriend"></AddFriends>
+        </div>
       </div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <div class="section">
+        <div class="section" style="height: 50vh">
           <h2>Who's in?</h2>
-          <div class="ui segment">
+          <div class="ui segment" style="max-height: 40vh; overflow: scroll">
             <div class="ui divided items" v-if="selectedFriends.length == 0">
               <div class="item">
                 <div class="content">
@@ -68,7 +84,7 @@
               <div class="item" v-for="friend in selectedFriends" :key="friend">
                 <div class="content">
                   <h3>{{friend.name}}</h3>
-                  <button class="btn btn-primary" @click="removeFriend(friend)">Remove</button>
+                  <button class="btn btn-danger" @click="removeFriend(friend)">Remove Friend</button>
                 </div>
               </div>
             </div>
@@ -84,7 +100,6 @@
   <button class="button" @click="submit" id="create"><router-link :to="{ name: 'createsuccess'}" class="text-light">Create Party</router-link></button>
     
   
-  <div id="largefiller"></div>
   <div id="largefiller"></div>
   <div id="largefiller"></div>
   </div>
@@ -103,6 +118,7 @@
     data() {
       return  {
         title: '',
+        description: '',
         activities: [],
         date: null,
         partyLeader: '',
@@ -141,7 +157,8 @@
         }
       },
       removeFriend(friend){
-        this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      document.getElementById(friend.email).disabled = false;
       },
       submit(){
         const auth = getAuth();
@@ -149,6 +166,7 @@
         console.log(user.email);
         const party = {
           title: this.title,
+          description: this.description,
           activities: this.activities,
           date: this.date,
           partyLeader: user.email,
@@ -162,6 +180,7 @@
           })
         
           console.log(this.title);
+          console.log(this.description);
           console.log(this.activities);
           console.log(this.date);
           console.log(this.partyLeader);
@@ -175,11 +194,12 @@
   
   </script>
   
-  <style>
+  <style scoped>
   
-  .container {
-    margin:0
+  h2, h3 {
+    font-family: 'Varela Round', sans-serif;
   }
+  
   .bg {
     background-color: rgb(255,250,247);
   }
@@ -197,10 +217,30 @@
     padding:20px;
     border-radius: 10px;
     box-shadow: 0 0 5pt 2pt #D3D3D3;
+    font-family: 'Varela Round', sans-serif;
   }
   
   #partydate {
-    padding:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-right:10px;
+    font-family: 'Varela Round', sans-serif;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    font-family: 'Varela Round', sans-serif;
+    font-size:20px;
+    text-align: center;
+  }
+
+
+  #partydesc {
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-right:10px;
     font-family: 'Varela Round', sans-serif;
     border: 0;
     outline: 0;
@@ -221,8 +261,7 @@
     font-size:40px;
     text-align: center;
   }
-  
-  
+    
   .button {
       background-color: crimson;
       color:white;
@@ -251,7 +290,6 @@
     margin-bottom:10px
   }
   
-  
   .toast-wrapper {
       position: fixed;
       width: 100%;
@@ -265,6 +303,7 @@
     box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
     max-width: 400px;
     margin: 0 auto;
+    font-family: 'Varela Round', sans-serif;
   }
   
   </style>
