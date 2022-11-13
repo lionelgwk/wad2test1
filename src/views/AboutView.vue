@@ -1,10 +1,7 @@
 <template>
     <div class="bg">
       <h3>Do these sound familiar?</h3>
-
-      <div class="text-align">
-        <AboutCard></AboutCard>
-      </div>
+      <AboutCard></AboutCard>
   <hr>
     <h3>PartyGoers can help!</h3>
       <AboutCarousel></AboutCarousel><br>

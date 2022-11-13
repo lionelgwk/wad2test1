@@ -50,6 +50,7 @@
 .card-text {
     margin-top: 10px;
     font-family: 'Varela Round', sans-serif;
+    background-color: rgb(255,250,247);
 }
 
 </style>
