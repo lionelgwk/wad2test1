@@ -1,11 +1,12 @@
 <template>
-
   <div class="bg" id="screen">
     <div id="largefiller"></div>
-    
-    <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title"><br><br>
+    <div class="container-fluid d-flex justify-content-center">
+    <input type="text" placeholder="Your Party Name" class="text-align-center" id="partyname" v-model="title">
+  </div>
+<div class="container-fluid d-flex justify-content-center">
     <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
-  
+  </div>
     <div id="filler"></div>
     <div id="filler"></div>
   
@@ -20,7 +21,7 @@
       <div class="col-lg-4 col-md-12">
         <div class="section">
           <h2>Selected activities:</h2>
-          <div class="ui segment" style="max-height: 500px; overflow:scroll">
+          <div class="ui segment" style="max-height: 50vh; overflow: scroll;">
             <div class="ui divided items" v-if="activities.length == 0">
               <div class="item">
                 <div class="content">
@@ -86,7 +87,6 @@
   
   <div id="largefiller"></div>
   <div id="largefiller"></div>
-  <div id="largefiller"></div>
   </div>
   </template>
   
@@ -141,7 +141,8 @@
         }
       },
       removeFriend(friend){
-        this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      this.selectedFriends.splice(this.selectedFriends.indexOf(friend), 1);
+      document.getElementById(friend.email).disabled = false;
       },
       submit(){
         const auth = getAuth();
@@ -177,8 +178,13 @@
   
   <style>
   
+  h2, h3 {
+    font-family: 'Varela Round', sans-serif;
+  }
+  
   .container {
-    margin:0
+    margin:0;
+    font-family: 'Varela Round', sans-serif;
   }
   .bg {
     background-color: rgb(255,250,247);
@@ -197,6 +203,7 @@
     padding:20px;
     border-radius: 10px;
     box-shadow: 0 0 5pt 2pt #D3D3D3;
+    font-family: 'Varela Round', sans-serif;
   }
   
   #partydate {
@@ -251,7 +258,6 @@
     margin-bottom:10px
   }
   
-  
   .toast-wrapper {
       position: fixed;
       width: 100%;
@@ -265,6 +271,7 @@
     box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
     max-width: 400px;
     margin: 0 auto;
+    font-family: 'Varela Round', sans-serif;
   }
   
   </style>
