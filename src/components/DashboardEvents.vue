@@ -12,7 +12,7 @@
                 <img class="card__thumb" :src="avatarURL" alt="" />
                 <div class="card__header-text">
                   <h3 class="card__title">{{ party.partyLeaderName }}</h3>
-                  <span class="card__status">{{ party.date }}</span>
+                  <span class="card__status">{{ party.date }} {{party.time}}</span>
                 </div>
           
               <p class="card__description">{{party.description}}</p>
@@ -122,8 +122,9 @@
   }
   
   body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Varela Round', sans-serif;
     background-color: #fef8f8;
+    
   }
   
   .cards {
@@ -207,27 +208,28 @@
 .card__title {
   font-size: 1em;
   margin: 0 0 .3em;
-  color: #6A515E;
+  color: black;
 }
 
 .card__tagline {
   display: block;
   margin: 1em 0;
-  font-family: "MockFlowFont";  
+  font-family: 'Varela Round', sans-serif;
   font-size: .8em; 
-  color: #D7BDCA;  
+  color: black;  
 }
 
 .card__status {
   font-size: .8em;
-  color: #D7BDCA;
+  color: black;
+
 }
 
 .card__description {
   padding: 0 2em 2em;
   margin: 0;
-  color: #D7BDCA;
-  font-family: "MockFlowFont";   
+  color: black;
+  font-family: 'Varela Round', sans-serif;  
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
