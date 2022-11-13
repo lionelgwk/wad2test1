@@ -1,47 +1,67 @@
 <template>
 
 <div>
-    <h1>Parties You Created</h1>
+    
+      <br>
+    <div class="container" id="bg">
+    <div class="box"><h1>Parties Created</h1>
+    </div>
+    <div class="container fluid">
     <ul class="cards">
       <li v-for="party in myParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
-            <div class="card__header">
-              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"></svg>
+
+            <h5 class="card__header"> {{party.title}}</h5>
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
+
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
+               
                 <h3 class="card__title">{{ party.partyLeaderName }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
-            </div>
-            <p class="card__description">{{party.description}}</p>
+
+        
+            <!-- <p class="card__description">{{party.partyLeaderName}}</p> -->
+
           </div>
         </router-link>
       </li>
-    </ul>
+    <li v-if="!myParties.length">
+      <p> You have yet to create any parties! Click <router-link :to="{ name: 'createevent'}" class="text-danger">here</router-link> to start one!</p>
+    </li>
+</ul>
 </div>
 
-<div>
-    <h1>Parties You Joined</h1>
+
+  <div class="box"><h1>Parties Joined</h1> </div>
+  <div class="container-fluid">
     <ul class="cards">
       <li v-for="party in theirParties" :key="party">
         <router-link :to="{ name: 'eventdetails', params: {id: party.id} }" class="card">
           <img :src="imgURL" class="card__image" alt="" />
           <div class="card__overlay">
-            <div class="card__header">
+            <h5 class="card__header"> {{party.title}}</h5>
               <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
               <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
               <div class="card__header-text">
                 <h3 class="card__title">{{ party.title }}</h3>
                 <span class="card__status">{{ party.date }}</span>
               </div>
-            </div>
-            <p class="card__description">{{party.description}}</p>
+
+            <p class="card__description">{{party.partyLeaderName}}</p>
+
           </div>
         </router-link>
       </li>
+      <li v-if="!theirParties.length">
+        <p> You have not joined any parties! Why not start one?</p>
+      </li>
     </ul>
+</div>
+</div>
 </div>
 
 
@@ -58,7 +78,9 @@ export default{
         return {
             myParties: [],
             theirParties: [],
-            imgURL: 'https://i.imgur.com/oYiTqum.jpg'
+
+            imgURL: 'https://media.istockphoto.com/photos/festival-event-party-with-hipster-people-blurred-background-picture-id613897214?b=1&k=20&m=613897214&s=170667a&w=0&h=-kMh6hhUXyGXn9sRXXj_Nc4aqalA3jCoqFUGsg3AG2I='
+            
         }
     },
     methods:{
@@ -138,9 +160,10 @@ body {
   position: relative;
   display: block;
   height: 100%;  
-  border-radius: calc(var(--curve) * 1px);
+  border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
+  max-width: 340px;
 }
 
 .card__image {      
@@ -155,7 +178,8 @@ body {
   right: 0;
   z-index: 1;      
   border-radius: calc(var(--curve) * 1px);    
-  background-color: rgba(255,255,255,0.8);      
+  background-color: white;      
+
   transform: translateY(100%);
   transition: .2s ease-in-out;
 }
@@ -169,11 +193,16 @@ body {
   display: flex;
   align-items: center;
   gap: 2em;
-  padding: 2em;
-  /* border-radius: calc(var(--curve) * 1px) 0 0 0;     */
-  background-color: rgba(255,255,255, 0.6);
+
+  padding:1em;
+  height:60px;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+
   transform: translateY(-100%);
   transition: .2s ease-in-out;
+  background-color: crimson;
+  color:white;
 }
 
 .card__arc {
@@ -230,4 +259,28 @@ body {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }    
+
+/* .box{ */
+  /* background-color: crimson; */
+  /* border:2px;
+  border-style: solid;
+  border-color:black;
+  margin:auto;
+  width:fit-content;
+  border-radius: 20px;
+  padding:5px;
+} */
+
+/* #bg{ */
+  /* background-image: url("../assets/pic1x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  
+  /* border:2px;
+  border-style:solid;
+  border-color:crimson;
+  border-radius: 20px;
+  padding-top: 10px;
+  height:90%;
+} */
 </style>
