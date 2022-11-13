@@ -59,7 +59,7 @@
                 <button class="ui button pink" @click="findNearby">Find Locations</button>
             </form>
 
-            <div class="ui segment" style="max-height: 500px; overflow:scroll">
+            <div class="ui segment"  style="height: 30vh; overflow:scroll">
                 <div class="ui divided items">
                     <div class="item" v-for="place in places" :key="place.id">
                         <div class="content">
@@ -72,7 +72,7 @@
             </div>
 
         </div>
-        <div class="col-lg-8 col-md-6 col-sm-12" ref="map">
+        <div class="col-lg-8 col-md-6 col-sm-12" ref="map" style="height: 55vh;">
         </div>
     </div>
 </div>

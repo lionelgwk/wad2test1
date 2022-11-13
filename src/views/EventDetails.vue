@@ -63,39 +63,5 @@ export default {
 }
 </script>
 
-<style scoped>
-.card{
-    border-color: crimson;
-    border-style: solid;
-    border-radius: 10px;
-    box-shadow: 15px 15px 15px black;
-    font-family: 'Varela Round', sans-serif;
-    margin-inline:auto;
-    margin-bottom: 2%;
-    align-content: center;
-    width: 30rem;
-}
- h1{
-    font-family: 'Varela Round', sans-serif;
-    padding-top: 2%;
-    font-weight: bold;
-    margin-inline: auto;
- }
- h2{
-    padding-top: 2%;
- }
- h3{
-    color:crimson
- }
- h5{
-    font-weight:bold;
- }
- li{
-    list-style:none;
-    padding-right:32px;
- }
-.inline{
-    display: inline-block;
-}
-
+<style>
 </style>
