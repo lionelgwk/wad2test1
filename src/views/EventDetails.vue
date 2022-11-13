@@ -1,32 +1,35 @@
 <template>
     <h1>Event Details</h1>
 
-    <div class="card">
+    <div class="card" data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine">
         <h2>{{title}}</h2>
         <h4>{{description}}</h4>
         <h5>Organised by {{partyLeaderName}}</h5>
         <h3>Places Headed To:</h3>
         <div class="list">
-            <ul>
-                <li v-for="activity in activities" :key="activity.id">
-                    <h5>{{activity.name}}</h5>
-                    <p>{{activity.vicinity}}</p>
-                </li>
-            </ul>
+        <ul>
+            <li v-for="activity in activities" :key="activity.id">
+                <h5>{{activity.name}}</h5>
+                <p>{{activity.vicinity}}</p>
+            </li>
+        </ul>
         </div>
         <div class ="row">
-            <div class="col">
-                <h3>Going With:</h3>
-                <ul>
-                    <h5><li v-for="friend in friends" :key="friend.id">{{friend.name}}</li></h5>
-                </ul>
-            </div>
-            <div class="col">
-                <h3>Date:</h3>
-                <h5>{{date}}</h5>
-            </div>
+        <div class="col">
+        <h3>With:</h3>
+        <ul>
+            <h5><li v-for="friend in friends" :key="friend.id">{{friend.name}}</li></h5>
+        </ul>
         </div>
-    </div>
+        <div class="col">
+        <h3>Date:</h3>
+        <h5>{{date}}</h5>
+        <h3>Time:</h3>
+        <h5>{{time}}</h5>
+        </div>
+        </div>
+
+        </div>
 </template>
 
 <script>
@@ -44,7 +47,8 @@ export default {
             partyLeader: '',
             partyLeaderName: '',
             title: '',
-            description: ''
+            description: '',
+            time: ''
         }
     },
     async mounted(){
@@ -59,6 +63,7 @@ export default {
         this.partyLeaderName = collection.partyLeaderName;
         this.title = collection.title;
         this.description = collection.description;
+        this.time = collection.time;
     }
 }
 </script>

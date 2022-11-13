@@ -12,7 +12,7 @@
        <input type="text" placeholder="Party description" class="text-align-center" id="partydesc" v-model="description">
     </div>
     <div class="col">
-      <input placeholder="Party Date" type="text" onfocus="(this.type = 'date')" id="partydate" v-model="date">
+      <input placeholder="Party Date and Time" type="text" onfocus="(this.type = 'datetime-local')" id="partydate" min="2022-11-12T00:00" max="2100-12-31T23:59" v-model="date">
     </div>
     <div class="col-lg-3 col-md-0"></div>
   </div>
@@ -127,7 +127,8 @@
         friends: [],
         selectFriend: '', 
         selectedFriends: [],
-        added: false
+        added: false,
+        time: ''
       }
     },
       
@@ -168,10 +169,11 @@
           title: this.title,
           description: this.description,
           activities: this.activities,
-          date: this.date,
+          date: this.date.split('T')[0],
           partyLeader: user.email,
           partyLeaderName: user.email.split('@')[0],
           friends: this.selectedFriends,
+          time: this.date.split('T')[1]
         }
   
         db.collection('parties').add(party)
